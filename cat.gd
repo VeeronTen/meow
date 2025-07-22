@@ -67,10 +67,10 @@ func _rotateRight(right: bool):
 	$CollisionShape2D.position.x = newcollisionOffset
 	
 func _rotateEarRight(ear: Ear, rightEar: bool, right: bool):
-	var z_index = 0
+	var newZIndex = 0
 	if (rightEar == right):
-		z_index = -1
-	ear.z_index = z_index
+		newZIndex = -1
+	ear.z_index = newZIndex
 	ear.rotateEarRight(right)
 	
 func _playMeow():
@@ -80,7 +80,7 @@ func _playMeow():
 func _on_meow_player_finished() -> void:
 	$Mouth.visible = false
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		_meow()
 		get_viewport().set_input_as_handled()
