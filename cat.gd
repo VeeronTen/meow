@@ -2,8 +2,10 @@ extends RigidBody2D
 
 @export var movePower: int = 400
 @export var moeowPower: int = 100
+@export var meowedScale: float = 1.2
 
 @onready var spriteOffset = $Sprite2D.position.x
+@onready var spriteYScale = $Sprite2D.scale.y
 @onready var mouthSpriteOffset = $Mouth.position.x
 
 func _ready() -> void:
@@ -20,6 +22,8 @@ func _process(delta: float) -> void:
 		linear_velocity = Vector2.UP * moeowPower
 		_earsUp()
 		_playMeow()
+		$Sprite2D.scale.y = spriteYScale * meowedScale
+	$Sprite2D.scale.y = lerp($Sprite2D.scale.y, spriteYScale, delta * 2)
 	
 func _attachEars():
 	_attachEar($LeftEar)
