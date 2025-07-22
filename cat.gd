@@ -7,6 +7,7 @@ extends RigidBody2D
 @onready var spriteOffset = $Sprite2D.position.x
 @onready var spriteYScale = $Sprite2D.scale.y
 @onready var mouthSpriteOffset = $Mouth.position.x
+@onready var collisionOffset = $CollisionShape2D.position.x
 
 func _ready() -> void:
 	_attachEars()
@@ -45,15 +46,19 @@ func _rotateRight(right: bool):
 	
 	var newSpriteOffset: float
 	var newMouthSpriteOffset: float
+	var newcollisionOffset: float
 	if (right):
 		newSpriteOffset = spriteOffset
 		newMouthSpriteOffset = mouthSpriteOffset
+		newcollisionOffset = collisionOffset
 	else:
 		newSpriteOffset = -spriteOffset
 		newMouthSpriteOffset = -mouthSpriteOffset
+		newcollisionOffset = -collisionOffset
 	$Sprite2D.position.x = newSpriteOffset
 	$Sprite2D.flip_h = not right
 	$Mouth.position.x = newMouthSpriteOffset
+	$CollisionShape2D.position.x = newcollisionOffset
 	
 func _rotateEarRight(ear: Ear, rightEar: bool, right: bool):
 	var z_index = 0

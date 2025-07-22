@@ -31,8 +31,8 @@ mass = 2.0
 linear_damp = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
-scale = Vector2(1, 0.56)
+position = Vector2(-9, -9)
+scale = Vector2(0.719997, 0.56)
 shape = SubResource("RectangleShape2D_6fl1u")
 
 [node name="MeowPlayer" type="AudioStreamPlayer2D" parent="."]
