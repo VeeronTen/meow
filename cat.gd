@@ -4,6 +4,7 @@ extends RigidBody2D
 @export var moeowPower: int = 100
 
 @onready var spriteOffset = $Sprite2D.position.x
+@onready var mouthSpriteOffset = $Mouth.position.x
 
 func _ready() -> void:
 	_attachEars()
@@ -37,13 +38,18 @@ func _earUp(year: Ear):
 func _rotateRight(right: bool):
 	_rotateEarRight($LeftEar, false, right)
 	_rotateEarRight($RightEar, true, right)
+	
 	var newSpriteOffset: float
+	var newMouthSpriteOffset: float
 	if (right):
 		newSpriteOffset = spriteOffset
+		newMouthSpriteOffset = mouthSpriteOffset
 	else:
 		newSpriteOffset = -spriteOffset
+		newMouthSpriteOffset = -mouthSpriteOffset
 	$Sprite2D.position.x = newSpriteOffset
 	$Sprite2D.flip_h = not right
+	$Mouth.position.x = newMouthSpriteOffset
 	
 func _rotateEarRight(ear: Ear, rightEar: bool, right: bool):
 	var z_index = 0
@@ -54,6 +60,11 @@ func _rotateEarRight(ear: Ear, rightEar: bool, right: bool):
 	
 func _playMeow():
 	$MeowPlayer.play()
+	$Mouth.visible = true
 	
 func _move(direction: Vector2):
 	linear_velocity = direction * movePower
+
+
+func _on_meow_player_finished() -> void:
+	$Mouth.visible = false
