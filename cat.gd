@@ -14,17 +14,23 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("ui_left")):
-		_move(Vector2.LEFT)
+		move(Vector2.LEFT)
 		_rotateRight(false)
 	if (Input.is_action_just_pressed("ui_right")):
-		_move(Vector2.RIGHT)
+		move(Vector2.RIGHT)
 		_rotateRight(true)
 	if (Input.is_action_just_pressed("ui_select")):
+		_meow()
+	$Sprite2D.scale.y = lerp($Sprite2D.scale.y, spriteYScale, delta * 2)
+	
+func move(direction: Vector2):
+	linear_velocity = direction * movePower
+	
+func _meow():
 		linear_velocity = Vector2.UP * moeowPower
 		_earsUp()
 		_playMeow()
 		$Sprite2D.scale.y = spriteYScale * meowedScale
-	$Sprite2D.scale.y = lerp($Sprite2D.scale.y, spriteYScale, delta * 2)
 	
 func _attachEars():
 	_attachEar($LeftEar)
@@ -70,10 +76,11 @@ func _rotateEarRight(ear: Ear, rightEar: bool, right: bool):
 func _playMeow():
 	$MeowPlayer.play()
 	$Mouth.visible = true
-	
-func _move(direction: Vector2):
-	linear_velocity = direction * movePower
-
 
 func _on_meow_player_finished() -> void:
 	$Mouth.visible = false
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		_meow()
+		get_viewport().set_input_as_handled()

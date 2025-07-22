@@ -10,6 +10,7 @@
 size = Vector2(128, 128)
 
 [node name="Cat" type="RigidBody2D"]
+input_pickable = true
 mass = 1000.0
 angular_damp = 16.637
 script = ExtResource("1_52fj1")
@@ -44,4 +45,5 @@ position = Vector2(1, 19)
 scale = Vector2(5.48, 4.6)
 texture = ExtResource("5_2u0g4")
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="finished" from="MeowPlayer" to="." method="_on_meow_player_finished"]
