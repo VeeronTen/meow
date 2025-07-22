@@ -15,16 +15,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("ui_left")):
 		move(Vector2.LEFT)
-		_rotateRight(false)
 	if (Input.is_action_just_pressed("ui_right")):
 		move(Vector2.RIGHT)
-		_rotateRight(true)
 	if (Input.is_action_just_pressed("ui_select")):
 		_meow()
 	$Sprite2D.scale.y = lerp($Sprite2D.scale.y, spriteYScale, delta * 2)
 	
 func move(direction: Vector2):
 	linear_velocity = direction * movePower
+	_rotateRight(direction.x > 0)
 	
 func _meow():
 		linear_velocity = Vector2.UP * moeowPower

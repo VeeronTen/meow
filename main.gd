@@ -1,11 +1,13 @@
 extends Node2D
 
 func _ready() -> void:
+	get_viewport().size_changed.connect(_placeEverething)
+
+func _placeEverething():
 	_positionCatToScreenCenter()
 	_positionWalls()
-	get_viewport().size_changed.connect(_positionCatToScreenCenter)
-	get_viewport().size_changed.connect(_positionWalls)
-
+	print("todo place boomboxes!")
+	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		var screenSizeX = get_viewport().size.x
@@ -25,3 +27,4 @@ func _positionWalls():
 	$Walls/Right.position.y = screenSize.y/2
 	$Walls/Bottom.position.x = screenSize.x/2
 	$Walls/Bottom.position.y = screenSize.y
+	
