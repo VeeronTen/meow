@@ -1,35 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://h5kbs2cpi87l"]
+[gd_scene load_steps=4 format=3 uid="uid://h5kbs2cpi87l"]
 
 [ext_resource type="Script" uid="uid://cnt6uouyykefm" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bmj8fchi7mol0" path="res://cat.tscn" id="2_h2yge"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0xm2m"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
-size = Vector2(1168.75, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(20, 248.061)
+[ext_resource type="PackedScene" uid="uid://mpfnewjy5jjd" path="res://wall.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 
 [node name="Cat" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(560, 277)
 
-[node name="Walls" type="StaticBody2D" parent="."]
-position = Vector2(574, 645)
-rotation = -0.00595212
-physics_material_override = SubResource("PhysicsMaterial_0xm2m")
-metadata/_edit_group_ = true
+[node name="Walls" type="Node2D" parent="."]
+position = Vector2(0, -1)
+rotation = -0.0174533
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_0xm2m")
+[node name="Wall" parent="Walls" instance=ExtResource("3_h2yge")]
+position = Vector2(0, 314)
+scale = Vector2(4, 200)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
-position = Vector2(-574.329, -114.42)
-shape = SubResource("RectangleShape2D_h2yge")
+[node name="Wall2" parent="Walls" instance=ExtResource("3_h2yge")]
+position = Vector2(1150, 314)
+scale = Vector2(4, 200)
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
-position = Vector2(575.656, -108.576)
-shape = SubResource("RectangleShape2D_h2yge")
+[node name="Wall3" parent="Walls" instance=ExtResource("3_h2yge")]
+position = Vector2(548, 657)
+rotation = -1.5843
+scale = Vector2(4, 200)
