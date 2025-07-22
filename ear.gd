@@ -13,9 +13,12 @@ func up():
 	linear_damp = 20
 	$EarsDownTimer.start()
 	
-func _earsDown():
+func rotateEarRight(right: bool):
+	$Sprite2D.flip_h = not right
+	
+func _earDown():
 	gravity_scale = default_gravity_scale
 	linear_damp = default_linear_dampe
 	
 func _on_ears_down_timer_timeout() -> void:
-	_earsDown()
+	_earDown()

@@ -1,16 +1,20 @@
 extends RigidBody2D
 
+@export var movePower: int = 400
+@export var moeowPower: int = 100
+
 func _ready() -> void:
 	_attachEars()
 
 func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("ui_left")):
-		linear_velocity = Vector2.LEFT * 400
+		_move(Vector2.LEFT)
 		_rotateRight(false)
 	if (Input.is_action_just_pressed("ui_right")):
-		linear_velocity = Vector2.RIGHT * 400
+		_move(Vector2.RIGHT)
 		_rotateRight(true)
 	if (Input.is_action_just_pressed("ui_select")):
+		linear_velocity = Vector2.UP * moeowPower
 		_earsUp()
 		_playMeow()
 	
@@ -29,18 +33,19 @@ func _earUp(year: Ear):
 	year.up()
 	
 func _rotateRight(right: bool):
-	pass
 	_rotateEarRight($LeftEar, false, right)
 	_rotateEarRight($RightEar, true, right)
 	$Sprite2D.flip_h = not right
 	
 func _rotateEarRight(ear: Ear, rightEar: bool, right: bool):
-	pass
 	var z_index = 0
 	if (rightEar == right):
 		z_index = -1
 	ear.z_index = z_index
-	ear.get_node("Sprite2D").flip_h = not right
+	ear.rotateEarRight(right)
 	
 func _playMeow():
 	$MeowPlayer.play()
+	
+func _move(direction: Vector2):
+	linear_velocity = direction * movePower
