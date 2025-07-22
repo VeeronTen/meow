@@ -3,6 +3,8 @@ extends RigidBody2D
 @export var movePower: int = 400
 @export var moeowPower: int = 100
 
+@onready var spriteOffset = $Sprite2D.position.x
+
 func _ready() -> void:
 	_attachEars()
 
@@ -35,6 +37,12 @@ func _earUp(year: Ear):
 func _rotateRight(right: bool):
 	_rotateEarRight($LeftEar, false, right)
 	_rotateEarRight($RightEar, true, right)
+	var newSpriteOffset: float
+	if (right):
+		newSpriteOffset = spriteOffset
+	else:
+		newSpriteOffset = -spriteOffset
+	$Sprite2D.position.x = newSpriteOffset
 	$Sprite2D.flip_h = not right
 	
 func _rotateEarRight(ear: Ear, rightEar: bool, right: bool):
