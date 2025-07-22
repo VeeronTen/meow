@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmwrckgfsxltn"]
+
+[ext_resource type="Script" uid="uid://by2m2fjsqqq6b" path="res://ear.gd" id="1_l5oxm"]
+[ext_resource type="Texture2D" uid="uid://cyr3ilolnn1wj" path="res://icon.svg" id="2_yoi40"]
+
+[node name="Ear" type="RigidBody2D"]
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 64)
+inertia = 0.01
+can_sleep = false
+linear_damp = 2.162
+script = ExtResource("1_l5oxm")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(0, -31)
+node_b = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_yoi40")
+
+[node name="EarsDownTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="EarsDownTimer" to="." method="_on_ears_down_timer_timeout"]

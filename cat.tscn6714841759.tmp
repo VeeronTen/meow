@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmj8fchi7mol0"]
+
+[ext_resource type="Script" uid="uid://dhbfo3spvurg2" path="res://cat.gd" id="1_52fj1"]
+[ext_resource type="Texture2D" uid="uid://cyr3ilolnn1wj" path="res://icon.svg" id="2_6fl1u"]
+[ext_resource type="PackedScene" uid="uid://dmwrckgfsxltn" path="res://ear.tscn" id="3_6fl1u"]
+[ext_resource type="AudioStream" uid="uid://b8d4v61qvk4ex" path="res://meow.wav" id="4_w46py"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fl1u"]
+size = Vector2(128, 128)
+
+[node name="Cat" type="RigidBody2D"]
+mass = 1000.0
+angular_damp = 16.637
+script = ExtResource("1_52fj1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6fl1u")
+
+[node name="LeftEar" parent="." instance=ExtResource("3_6fl1u")]
+z_as_relative = false
+position = Vector2(-45, -15)
+
+[node name="RightEar" parent="." instance=ExtResource("3_6fl1u")]
+z_index = -1
+z_as_relative = false
+position = Vector2(48, -15)
+mass = 2.0
+linear_damp = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6fl1u")
+
+[node name="MeowPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_w46py")
