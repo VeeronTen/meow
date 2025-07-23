@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cufb2uafm5kvg" path="res://art/pixel.png" id="5_2u0g4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6fl1u"]
-size = Vector2(128, 128)
+size = Vector2(115.278, 128)
 
 [node name="Cat" type="RigidBody2D"]
 input_pickable = true
@@ -15,10 +15,17 @@ mass = 1000.0
 angular_damp = 16.637
 script = ExtResource("1_52fj1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 position = Vector2(-27, 0)
 scale = Vector2(4.92, 4.92)
 texture = ExtResource("2_w46py")
+
+[node name="Mouth" type="Sprite2D" parent="Pivot"]
+position = Vector2(5, 21)
+scale = Vector2(15, 5)
+texture = ExtResource("5_2u0g4")
 
 [node name="LeftEar" parent="." instance=ExtResource("3_6fl1u")]
 z_as_relative = false
@@ -32,18 +39,12 @@ mass = 2.0
 linear_damp = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9, 0)
+position = Vector2(-9.5, 0)
 scale = Vector2(0.719997, 0.4)
 shape = SubResource("RectangleShape2D_6fl1u")
 
 [node name="MeowPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_w46py")
-
-[node name="Mouth" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1, 19)
-scale = Vector2(5.48, 4.6)
-texture = ExtResource("5_2u0g4")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="finished" from="MeowPlayer" to="." method="_on_meow_player_finished"]

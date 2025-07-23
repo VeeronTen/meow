@@ -4,10 +4,8 @@ extends RigidBody2D
 @export var moeowPower: int = 100
 @export var meowedScale: float = 1.2
 
-@onready var spriteOffset = $Sprite2D.position.x
-@onready var spriteYScale = $Sprite2D.scale.y
-@onready var mouthSpriteOffset = $Mouth.position.x
 @onready var collisionOffset = $CollisionShape2D.position.x
+@onready var spriteYScale = $Pivot/Sprite2D.scale.y
 
 func _ready() -> void:
 	_attachEars()
@@ -19,7 +17,7 @@ func _process(delta: float) -> void:
 		move(Vector2.RIGHT)
 	if (Input.is_action_just_pressed("ui_select")):
 		_meow()
-	$Sprite2D.scale.y = lerp($Sprite2D.scale.y, spriteYScale, delta * 2)
+	$Pivot/Sprite2D.scale.y = lerp($Pivot/Sprite2D.scale.y, spriteYScale, delta * 2)
 	
 func move(direction: Vector2):
 	linear_velocity = direction * movePower
@@ -29,7 +27,7 @@ func _meow():
 		linear_velocity = Vector2.UP * moeowPower
 		_earsUp()
 		_playMeow()
-		$Sprite2D.scale.y = spriteYScale * meowedScale
+		$Pivot/Sprite2D.scale.y = spriteYScale * meowedScale
 	
 func _attachEars():
 	_attachEar($LeftEar)
@@ -48,21 +46,15 @@ func _earUp(year: Ear):
 func _rotateRight(right: bool):
 	_rotateEarRight($LeftEar, false, right)
 	_rotateEarRight($RightEar, true, right)
-	
-	var newSpriteOffset: float
-	var newMouthSpriteOffset: float
 	var newcollisionOffset: float
+	var newScale
 	if (right):
-		newSpriteOffset = spriteOffset
-		newMouthSpriteOffset = mouthSpriteOffset
 		newcollisionOffset = collisionOffset
+		newScale = 1
 	else:
-		newSpriteOffset = -spriteOffset
-		newMouthSpriteOffset = -mouthSpriteOffset
 		newcollisionOffset = -collisionOffset
-	$Sprite2D.position.x = newSpriteOffset
-	$Sprite2D.flip_h = not right
-	$Mouth.position.x = newMouthSpriteOffset
+		newScale = -1
+	$Pivot.scale.x = newScale
 	$CollisionShape2D.position.x = newcollisionOffset
 	
 func _rotateEarRight(ear: Ear, rightEar: bool, right: bool):
@@ -74,10 +66,10 @@ func _rotateEarRight(ear: Ear, rightEar: bool, right: bool):
 	
 func _playMeow():
 	$MeowPlayer.play()
-	$Mouth.visible = true
+	$Pivot/Mouth.visible = true
 
 func _on_meow_player_finished() -> void:
-	$Mouth.visible = false
+	$Pivot/Mouth.visible = false
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
