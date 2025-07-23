@@ -6,9 +6,21 @@ extends RigidBody2D
 
 @onready var collisionOffset = $CollisionShape2D.position.x
 @onready var spriteYScale = $Pivot/Sprite2D.scale.y
+#todo не нравится что при мяуке может развернуться
+#всратая коллизия с мячем
+#- окно с птичкой, будет улетать при мягко возле нее
+#- случайные звуки или звуки передвижения
+#- светильник с ручкой, если дёрнуть - смена дня и ночи
+#- кликабельный телевизор, громче при приближении
+#- поставка с вторым котом, после мягкой в углу
+#все расставить, мяч и тд
+#спать
+
+var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	_attachEars()
+	_startBlinking()
 
 func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("ui_left")):
@@ -23,6 +35,11 @@ func move(direction: Vector2):
 	linear_velocity = direction * movePower
 	_rotateRight(direction.x > 0)
 	
+func _startBlinking():
+	var timeTillNextBlink = rng.randf_range(1.3, 3)
+	get_tree().create_timer(timeTillNextBlink).timeout.connect(_startBlinking)
+	$AnimationTree.set("parameters/BlinkShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		
 func _meow():
 		linear_velocity = Vector2.UP * moeowPower
 		_earsUp()

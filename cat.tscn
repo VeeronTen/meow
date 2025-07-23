@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmj8fchi7mol0"]
+[gd_scene load_steps=20 format=3 uid="uid://bmj8fchi7mol0"]
 
 [ext_resource type="Script" uid="uid://dhbfo3spvurg2" path="res://cat.gd" id="1_52fj1"]
 [ext_resource type="Texture2D" uid="uid://bmhwq5bei5xjc" path="res://art/cat.png" id="2_w46py"]
@@ -49,7 +49,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.233333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [1e-05, 1.0, 1e-05]
+"values": [1e-05, 0.37032, 1e-05]
 }
 
 [sub_resource type="Animation" id="Animation_2u0g4"]
@@ -59,7 +59,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Pivot/Mouth:scale:y")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.166667, 0.266667),
@@ -79,6 +79,16 @@ _data = {
 &"meow": SubResource("Animation_2u0g4")
 }
 
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_2u0g4"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2v165"]
+animation = &"blink"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_eyw7o"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7rjga"]
+animation = &"idle"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2u0g4"]
 animation = &"idle"
 
@@ -88,15 +98,23 @@ animation = &"meow"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2v165"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_eyw7o"]
-graph_offset = Vector2(-604.283, -12.7579)
+graph_offset = Vector2(-401.275, -26.6592)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_2u0g4")
+nodes/Add2/position = Vector2(402.422, 76.7342)
+nodes/Blink/node = SubResource("AnimationNodeAnimation_2v165")
+nodes/Blink/position = Vector2(-90.4143, 224.339)
+nodes/BlinkShot/node = SubResource("AnimationNodeOneShot_eyw7o")
+nodes/BlinkShot/position = Vector2(96, 16)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_2u0g4")
-nodes/Idle/position = Vector2(-272, 32)
+nodes/Idle/position = Vector2(-496, 192)
+"nodes/Idle 2/node" = SubResource("AnimationNodeAnimation_7rjga")
+"nodes/Idle 2/position" = Vector2(-384, -16)
 nodes/Meow/node = SubResource("AnimationNodeAnimation_2hdoq")
-nodes/Meow/position = Vector2(-304, 240)
+nodes/Meow/position = Vector2(-464, 448)
 nodes/MeowShot/node = SubResource("AnimationNodeOneShot_2v165")
-nodes/MeowShot/position = Vector2(80, 48)
-nodes/output/position = Vector2(336, 80)
-node_connections = [&"MeowShot", 0, &"Idle", &"MeowShot", 1, &"Meow", &"output", 0, &"MeowShot"]
+nodes/MeowShot/position = Vector2(96, 400)
+nodes/output/position = Vector2(576, 48)
+node_connections = [&"Add2", 0, &"BlinkShot", &"Add2", 1, &"MeowShot", &"BlinkShot", 0, &"Idle 2", &"BlinkShot", 1, &"Blink", &"MeowShot", 0, &"Idle", &"MeowShot", 1, &"Meow", &"output", 0, &"Add2"]
 
 [node name="Cat" type="RigidBody2D"]
 input_pickable = true
@@ -117,11 +135,12 @@ scale = Vector2(5, 1e-05)
 texture = ExtResource("5_2u0g4")
 
 [node name="Eyelids" type="ColorRect" parent="Pivot"]
-offset_left = -35.0
-offset_top = -13.0
-offset_right = 5.0
-offset_bottom = 27.0
-scale = Vector2(1, 1e-05)
+offset_left = -23.0
+offset_top = -9.0
+offset_right = 17.0
+offset_bottom = 31.0
+scale = Vector2(1.3, 1e-05)
+color = Color(0, 0, 0, 1)
 
 [node name="LeftEar" parent="." instance=ExtResource("3_6fl1u")]
 z_as_relative = false
@@ -151,6 +170,10 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendTree_eyw7o")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
+parameters/Add2/add_amount = 1.0
+parameters/BlinkShot/active = false
+parameters/BlinkShot/internal_active = false
+parameters/BlinkShot/request = 0
 parameters/MeowShot/active = false
 parameters/MeowShot/internal_active = false
 parameters/MeowShot/request = 0
