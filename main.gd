@@ -11,8 +11,7 @@ func _positionEverething():
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		var screenSizeX = get_viewport().size.x
-		if (event.position.x > screenSizeX/2):
+		if (event.position.x > $Cat.position.x):
 			$Cat.move(Vector2.RIGHT)
 		else:
 			$Cat.move(Vector2.LEFT)
