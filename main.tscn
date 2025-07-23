@@ -44,10 +44,9 @@ autoplay = true
 bus = &"Music"
 
 [node name="Boomboxes" type="Node2D" parent="."]
-position = Vector2(981, 265)
 
 [node name="BoomboxLeft" parent="Boomboxes" instance=ExtResource("5_lquwl")]
-position = Vector2(-849, -118)
+position = Vector2(-14, 109)
 rotation = 0.194937
 scale = Vector2(-1, 1)
 busName = "Music"
@@ -55,7 +54,7 @@ shakeIfAbove = 0.13
 shakedScale = 1.4
 
 [node name="BoomboxRight" parent="Boomboxes" instance=ExtResource("5_lquwl")]
-position = Vector2(26, -134)
+position = Vector2(1158, 109)
 rotation = -0.177384
 busName = "Music"
 shakeIfAbove = 0.095
