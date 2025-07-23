@@ -11,6 +11,8 @@ func _positionEverething():
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		#todo remove
+		changeDayTime()
 		if (event.position.x > $Cat.position.x):
 			$Cat.move(Vector2.RIGHT)
 		else:
@@ -34,3 +36,9 @@ func _positionBoomboxes():
 	$Boomboxes/BoomboxLeft.position.y = 100
 	$Boomboxes/BoomboxRight.position.x = screenSize.x - 100
 	$Boomboxes/BoomboxRight.position.y = 100
+	
+func changeDayTime():
+	var changeToNight = !$NightFilter.visible
+	$NightFilter.visible = changeToNight
+	$Boomboxes/BoomboxLeft.changeMusicVolume(changeToNight) 
+	$Boomboxes/BoomboxRight.changeMusicVolume(changeToNight)	

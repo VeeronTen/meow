@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	_hadNoSoundsFor += delta
 	$Sprite2D.scale = lerp($Sprite2D.scale, defaultSpriteScale, delta*4)
 	
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(_body: Node) -> void:
 	_playBounce()
 	
 func _playBounce():	

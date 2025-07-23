@@ -63,3 +63,9 @@ shakedScale = 1.1
 
 [node name="Ball" parent="." instance=ExtResource("6_7mycd")]
 position = Vector2(103, 519)
+
+[node name="NightFilter" type="CanvasModulate" parent="."]
+visible = false
+position = Vector2(-1532, -1644)
+scale = Vector2(100, 100)
+color = Color(0.210867, 0.210867, 0.210867, 1)
