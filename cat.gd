@@ -13,8 +13,9 @@ extends RigidBody2D
 #- светильник с ручкой, если дёрнуть - смена дня и ночи
 #- кликабельный телевизор, громче при приближении
 #- поставка с вторым котом, после мягкой в углу
+#оформление с лоадером
+#рефакетор всего потому что оч много всякого в котокоде
 #все расставить, мяч и тд
-#спать
 
 var rng = RandomNumberGenerator.new()
 
@@ -32,6 +33,7 @@ func _process(delta: float) -> void:
 	$Pivot/Sprite2D.scale.y = lerp($Pivot/Sprite2D.scale.y, spriteYScale, delta * 2)
 	
 func move(direction: Vector2):
+	wakeUp()
 	linear_velocity = direction * movePower
 	_rotateRight(direction.x > 0)
 	
@@ -41,10 +43,11 @@ func _startBlinking():
 	$AnimationTree.set("parameters/BlinkShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		
 func _meow():
-		linear_velocity = Vector2.UP * moeowPower
-		_earsUp()
-		_playMeow()
-		$Pivot/Sprite2D.scale.y = spriteYScale * meowedScale
+	wakeUp()
+	linear_velocity = Vector2.UP * moeowPower
+	_earsUp()
+	_playMeow()
+	$Pivot/Sprite2D.scale.y = spriteYScale * meowedScale
 	
 func _attachEars():
 	_attachEar($LeftEar)
@@ -89,3 +92,16 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		_meow()
 		get_viewport().set_input_as_handled()
+
+
+func _on_sleep_timer_timeout() -> void:
+	_sleep()
+
+func _sleep():
+	$AnimationTree.set("parameters/SleepingBlend/blend_amount", 1.0)
+	$Pivot/SleepParticles.emitting = true
+	
+func wakeUp():
+	$SleepTimer.start()
+	$Pivot/SleepParticles.emitting = false
+	$AnimationTree.set("parameters/SleepingBlend/blend_amount", 0)

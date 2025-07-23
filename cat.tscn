@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://bmj8fchi7mol0"]
+[gd_scene load_steps=24 format=3 uid="uid://bmj8fchi7mol0"]
 
 [ext_resource type="Script" uid="uid://dhbfo3spvurg2" path="res://cat.gd" id="1_52fj1"]
 [ext_resource type="Texture2D" uid="uid://bmhwq5bei5xjc" path="res://art/cat.png" id="2_w46py"]
 [ext_resource type="PackedScene" uid="uid://dmwrckgfsxltn" path="res://ear.tscn" id="3_6fl1u"]
+[ext_resource type="Texture2D" uid="uid://7pykj3f0oanu" path="res://art/sleepzzz.png" id="4_2hdoq"]
 [ext_resource type="AudioStream" uid="uid://b8d4v61qvk4ex" path="res://sounds/meow.wav" id="4_w46py"]
 [ext_resource type="Texture2D" uid="uid://cufb2uafm5kvg" path="res://art/pixel.png" id="5_2u0g4"]
 
@@ -71,12 +72,29 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_eyw7o"]
 resource_name = "idle"
 
+[sub_resource type="Animation" id="Animation_7rjga"]
+resource_name = "sleeping"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Eyelids:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1e-05, 0.37032]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2hdoq"]
 _data = {
 &"RESET": SubResource("Animation_2hdoq"),
 &"blink": SubResource("Animation_2v165"),
 &"idle": SubResource("Animation_eyw7o"),
-&"meow": SubResource("Animation_2u0g4")
+&"meow": SubResource("Animation_2u0g4"),
+&"sleeping": SubResource("Animation_7rjga")
 }
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_2u0g4"]
@@ -97,24 +115,33 @@ animation = &"meow"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2v165"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eyw7o"]
+animation = &"sleeping"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_7rjga"]
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_eyw7o"]
-graph_offset = Vector2(-401.275, -26.6592)
+graph_offset = Vector2(-461.275, -19.4592)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_2u0g4")
-nodes/Add2/position = Vector2(402.422, 76.7342)
+nodes/Add2/position = Vector2(672, 416)
 nodes/Blink/node = SubResource("AnimationNodeAnimation_2v165")
-nodes/Blink/position = Vector2(-90.4143, 224.339)
+nodes/Blink/position = Vector2(-512, 320)
 nodes/BlinkShot/node = SubResource("AnimationNodeOneShot_eyw7o")
-nodes/BlinkShot/position = Vector2(96, 16)
+nodes/BlinkShot/position = Vector2(-224, 32)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_2u0g4")
-nodes/Idle/position = Vector2(-496, 192)
+nodes/Idle/position = Vector2(-592, 800)
 "nodes/Idle 2/node" = SubResource("AnimationNodeAnimation_7rjga")
-"nodes/Idle 2/position" = Vector2(-384, -16)
+"nodes/Idle 2/position" = Vector2(-592, -32)
 nodes/Meow/node = SubResource("AnimationNodeAnimation_2hdoq")
-nodes/Meow/position = Vector2(-464, 448)
+nodes/Meow/position = Vector2(-592, 1008)
 nodes/MeowShot/node = SubResource("AnimationNodeOneShot_2v165")
-nodes/MeowShot/position = Vector2(96, 400)
-nodes/output/position = Vector2(576, 48)
-node_connections = [&"Add2", 0, &"BlinkShot", &"Add2", 1, &"MeowShot", &"BlinkShot", 0, &"Idle 2", &"BlinkShot", 1, &"Blink", &"MeowShot", 0, &"Idle", &"MeowShot", 1, &"Meow", &"output", 0, &"Add2"]
+nodes/MeowShot/position = Vector2(32, 880)
+nodes/Sleeping/node = SubResource("AnimationNodeAnimation_eyw7o")
+nodes/Sleeping/position = Vector2(0.476261, 396.099)
+nodes/SleepingBlend/node = SubResource("AnimationNodeBlend2_7rjga")
+nodes/SleepingBlend/position = Vector2(240, 80)
+nodes/output/position = Vector2(1024, 240)
+node_connections = [&"Add2", 0, &"SleepingBlend", &"Add2", 1, &"MeowShot", &"BlinkShot", 0, &"Idle 2", &"BlinkShot", 1, &"Blink", &"MeowShot", 0, &"Idle", &"MeowShot", 1, &"Meow", &"SleepingBlend", 0, &"BlinkShot", &"SleepingBlend", 1, &"Sleeping", &"output", 0, &"Add2"]
 
 [node name="Cat" type="RigidBody2D"]
 input_pickable = true
@@ -141,6 +168,21 @@ offset_right = 17.0
 offset_bottom = 31.0
 scale = Vector2(1.3, 1e-05)
 color = Color(0, 0, 0, 1)
+
+[node name="SleepParticles" type="CPUParticles2D" parent="Pivot"]
+position = Vector2(-6, -25)
+emitting = false
+amount = 3
+texture = ExtResource("4_2hdoq")
+lifetime = 3.0
+spread = 40.0
+gravity = Vector2(0, -30)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+angle_min = -20.0
+angle_max = 20.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
 
 [node name="LeftEar" parent="." instance=ExtResource("3_6fl1u")]
 z_as_relative = false
@@ -177,6 +219,13 @@ parameters/BlinkShot/request = 0
 parameters/MeowShot/active = false
 parameters/MeowShot/internal_active = false
 parameters/MeowShot/request = 0
+parameters/SleepingBlend/blend_amount = 0.0
+
+[node name="SleepTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="finished" from="MeowPlayer" to="." method="_on_meow_player_finished"]
+[connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]
