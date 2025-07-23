@@ -34,6 +34,8 @@ func _process(delta: float) -> void:
 	
 func move(direction: Vector2):
 	wakeUp()
+	$MovePlayer.play()
+	$MovePlayer.pitch_scale = rng.randf_range(0.3, 2.5)
 	linear_velocity = direction * movePower
 	_rotateRight(direction.x > 0)
 	
@@ -86,6 +88,7 @@ func _rotateEarRight(ear: Ear, rightEar: bool, right: bool):
 	
 func _playMeow():
 	$MeowPlayer.play()
+	$MeowPlayer.pitch_scale = rng.randf_range(0.75, 1.1)
 	$AnimationTree.set("parameters/MeowShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
