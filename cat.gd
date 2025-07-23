@@ -66,10 +66,7 @@ func _rotateEarRight(ear: Ear, rightEar: bool, right: bool):
 	
 func _playMeow():
 	$MeowPlayer.play()
-	$Pivot/Mouth.visible = true
-
-func _on_meow_player_finished() -> void:
-	$Pivot/Mouth.visible = false
+	$AnimationTree.set("parameters/MeowShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
