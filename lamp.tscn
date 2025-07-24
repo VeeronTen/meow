@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhrqc0pma24yv"]
+
+[ext_resource type="Texture2D" uid="uid://uu8je6iqts0m" path="res://art/lamp.png" id="1_bekw5"]
+[ext_resource type="Script" uid="uid://c6dukfahybhk6" path="res://lamp.gd" id="1_uno5e"]
+[ext_resource type="AudioStream" uid="uid://dbghhurol55l" path="res://sounds/lamp_switch.wav" id="3_vxcd3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bekw5"]
+
+[sub_resource type="Gradient" id="Gradient_vxcd3"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.327381, 0.75)
+colors = PackedColorArray(1, 1, 1, 0.552941, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qfipa"]
+gradient = SubResource("Gradient_vxcd3")
+fill = 1
+fill_from = Vector2(0.505983, 0.500855)
+fill_to = Vector2(0.868376, 0.148718)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vxcd3"]
+polygon = PackedVector2Array(-38, 167, -54, 167, -54, 106, 31, 106, 31, 167, 12, 167, -10, 120)
+
+[node name="Lamp" type="Node2D"]
+script = ExtResource("1_uno5e")
+
+[node name="Source" type="StaticBody2D" parent="."]
+
+[node name="Lamp" type="RigidBody2D" parent="."]
+position = Vector2(0, 147)
+input_pickable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamp"]
+scale = Vector2(5.6, 5.6)
+texture = ExtResource("1_bekw5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp"]
+scale = Vector2(3.48, 3.4)
+shape = SubResource("RectangleShape2D_bekw5")
+
+[node name="PointLight2D" type="PointLight2D" parent="Lamp"]
+position = Vector2(0, -15)
+scale = Vector2(31.84, 31.84)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_qfipa")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Lamp"]
+position = Vector2(10, -145)
+occluder = SubResource("OccluderPolygon2D_vxcd3")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(0, -1)
+node_a = NodePath("../Source")
+node_b = NodePath("../Lamp")
+softness = 2.54
+angular_limit_enabled = true
+angular_limit_lower = -0.0174533
+angular_limit_upper = 0.0174533
+
+[node name="SwitchSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vxcd3")
+volume_db = 1.981
+pitch_scale = 0.75
+
+[connection signal="input_event" from="Lamp" to="." method="_on_lamp_input_event"]
+[connection signal="mouse_exited" from="Lamp" to="." method="_on_lamp_mouse_exited"]

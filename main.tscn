@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://h5kbs2cpi87l"]
+[gd_scene load_steps=9 format=3 uid="uid://h5kbs2cpi87l"]
 
 [ext_resource type="Script" uid="uid://cnt6uouyykefm" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bmj8fchi7mol0" path="res://cat.tscn" id="2_h2yge"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d2gkmske1vsr3" path="res://boombox.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://t6abqyf2gbak" path="res://ball.tscn" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://das7no7n78wpa" path="res://click_ray_cast.gd" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://dhrqc0pma24yv" path="res://lamp.tscn" id="8_5vw27"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
@@ -69,9 +70,14 @@ position = Vector2(103, 519)
 visible = false
 position = Vector2(-1532, -1644)
 scale = Vector2(100, 100)
-color = Color(0.159615, 0.215821, 0.283573, 1)
+color = Color(0.106503, 0.213406, 0.351216, 1)
 
 [node name="ClickRayCast" type="RayCast2D" parent="."]
 target_position = Vector2(0, 0)
 hit_from_inside = true
 script = ExtResource("7_272bh")
+
+[node name="Lamp" parent="." instance=ExtResource("8_5vw27")]
+position = Vector2(540, -12)
+
+[connection signal="switched" from="Lamp" to="." method="_on_lamp_switched"]
