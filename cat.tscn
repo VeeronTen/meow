@@ -54,6 +54,9 @@ tracks/0/keys = {
 "values": [1e-05, 0.37032, 1e-05]
 }
 
+[sub_resource type="Animation" id="Animation_eyw7o"]
+resource_name = "idle"
+
 [sub_resource type="Animation" id="Animation_2u0g4"]
 resource_name = "meow"
 length = 0.3
@@ -69,9 +72,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [1e-05, 10.0, 1e-05]
 }
-
-[sub_resource type="Animation" id="Animation_eyw7o"]
-resource_name = "idle"
 
 [sub_resource type="Animation" id="Animation_7rjga"]
 resource_name = "sleeping"

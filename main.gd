@@ -9,11 +9,13 @@ func _positionEverething():
 	_positionWalls()
 	_positionBoomboxes()
 	
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		#todo remove
-		changeDayTime()
-		if (event.position.x > $Cat.position.x):
+		if ($ClickRayCast.clickedTo() == "Cat"):
+			$Cat.meow()
+			#todo remove
+			changeDayTime()
+		elif (event.position.x > $Cat.position.x):
 			$Cat.move(Vector2.RIGHT)
 		else:
 			$Cat.move(Vector2.LEFT)

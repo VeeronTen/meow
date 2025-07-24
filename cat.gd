@@ -16,6 +16,7 @@ extends RigidBody2D
 #все расставить, мяч и тд
 #рандомные звуки по таймеру для эмбиента?
 #звуки птички
+#сраный годот спамит фейковыми изменениями (переносами строк) в *.tscn
 
 var rng = RandomNumberGenerator.new()
 
@@ -29,7 +30,7 @@ func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("ui_right")):
 		move(Vector2.RIGHT)
 	if (Input.is_action_just_pressed("ui_select")):
-		_meow()
+		meow()
 	$Pivot/Sprite2D.scale.y = lerp($Pivot/Sprite2D.scale.y, spriteYScale, delta * 2)
 	
 func move(direction: Vector2):
@@ -44,7 +45,7 @@ func _startBlinking():
 	get_tree().create_timer(timeTillNextBlink).timeout.connect(_startBlinking)
 	$AnimationTree.set("parameters/BlinkShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		
-func _meow():
+func meow():
 	wakeUp()
 	linear_velocity = Vector2.UP * moeowPower
 	_earsUp()
@@ -90,12 +91,6 @@ func _playMeow():
 	$MeowPlayer.play()
 	$MeowPlayer.pitch_scale = rng.randf_range(0.75, 1.1)
 	$AnimationTree.set("parameters/MeowShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-
-func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		_meow()
-		get_viewport().set_input_as_handled()
-
 
 func _on_sleep_timer_timeout() -> void:
 	_sleep()
