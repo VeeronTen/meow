@@ -23,6 +23,8 @@ size = Vector2(20, 20.118)
 
 [node name="Tv" type="StaticBody2D"]
 scale = Vector2(4.269, 4.269)
+collision_layer = 8388608
+collision_mask = 0
 input_pickable = true
 script = ExtResource("1_uw3wn")
 metadata/_edit_lock_ = true
