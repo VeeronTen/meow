@@ -11,10 +11,10 @@ signal switched
 var dragging = false
 var switchedThisDrag = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	queue_redraw()
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if dragging:
 		_applyDragForce()
 		if _lampEnoughToSwitch() and not switchedThisDrag:
@@ -24,7 +24,7 @@ func _draw() -> void:
 	draw_line(Vector2.ZERO, $Lamp.position + Vector2(-4, 0) , Color(0, 0, 0), 7)
 	draw_line(Vector2.ZERO, $Lamp.position + Vector2(4, 0), Color(0, 0, 0), 7)
 	
-func _on_lamp_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_lamp_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
 			_startDragging()
