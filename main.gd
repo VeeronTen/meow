@@ -8,9 +8,10 @@ extends Node2D
 #6.  все расставить при изменении экрана, мяч и тд
 #7.  рандомные звуки по таймеру для эмбиента?
 #8.  звуки птички
-#9.  ночью спать скорее
+#9.  если не по ссылке доступ к объектам, подсказки лучше?
 #10. иконка запуска
 #11. сраный годот спамит фейковыми изменениями (переносами строк) в *.tscn
+
 
 func _ready() -> void:
 	_positionEverething()
@@ -55,7 +56,8 @@ func changeDayTime():
 	var changeToNight = !$NightFilter.visible
 	$NightFilter.visible = changeToNight
 	$Boomboxes/BoomboxLeft.changeMusicVolume(changeToNight) 
-	$Boomboxes/BoomboxRight.changeMusicVolume(changeToNight)	
+	$Boomboxes/BoomboxRight.changeMusicVolume(changeToNight)
+	$Cat.set_sleepy(changeToNight)
 
 
 func _on_lamp_switched() -> void:

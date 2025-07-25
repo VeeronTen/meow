@@ -122,7 +122,6 @@ animation = &"sleeping"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_7rjga"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_eyw7o"]
-graph_offset = Vector2(-461.275, -19.4592)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_2u0g4")
 nodes/Add2/position = Vector2(672, 416)
 nodes/Blink/node = SubResource("AnimationNodeAnimation_2v165")
@@ -227,7 +226,7 @@ parameters/MeowShot/request = 0
 parameters/SleepingBlend/blend_amount = 0.0
 
 [node name="SleepTimer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 10.0
 one_shot = true
 autostart = true
 

@@ -6,6 +6,8 @@ extends RigidBody2D
 
 @onready var collisionOffset = $CollisionShape2D.position.x
 @onready var spriteYScale = $Pivot/Sprite2D.scale.y
+@onready var _default_sleep_timer = $SleepTimer.wait_time
+@onready var _time_to_sleep_at_night = _default_sleep_timer / 2
 
 var rng = RandomNumberGenerator.new()
 
@@ -92,3 +94,9 @@ func wakeUp():
 	$SleepTimer.start()
 	$Pivot/SleepParticles.emitting = false
 	$AnimationTree.set("parameters/SleepingBlend/blend_amount", 0)
+	
+func set_sleepy(sleepy: bool):
+	var new_time_to_sleep = _default_sleep_timer
+	if sleepy:
+		new_time_to_sleep = _time_to_sleep_at_night
+	$SleepTimer.wait_time = new_time_to_sleep
