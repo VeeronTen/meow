@@ -10,15 +10,22 @@ extends Node2D
 #9.  если не по ссылке доступ к объектам, подсказки лучше? или нужен именно класс нейм
 #11. сраный годот спамит фейковыми изменениями (переносами строк) в *.tscn
 
+var distance_to_scare_mouse = 0
 
 func _ready() -> void:
 	_positionEverething()
 	get_viewport().size_changed.connect(_positionEverething)
+	distance_to_scare_mouse = get_viewport().size.x / 4
 
 func _physics_process(_delta: float) -> void:
 	var distance_to_tv = $Cat.position.distance_to($Tv.position)
 	var new_noise_shift = -distance_to_tv / 30
 	$Tv.shift_noise_volume(new_noise_shift)
+	var distance_to_mouse_hole = $Cat.position.distance_to($MouseHole.position)
+	if (distance_to_mouse_hole < distance_to_scare_mouse):
+		$MouseHole.scare()
+	else:
+		$MouseHole.calm()
 	
 func _positionEverething():
 	_positionCatToScreenCenter()
