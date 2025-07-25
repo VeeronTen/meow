@@ -101,6 +101,9 @@ func wakeUp():
 	$AnimationTree.set("parameters/SleepingBlend/blend_amount", 0)
 	
 func set_sleepy(sleepy: bool):
+	if $SleepTimer.time_left == 0.0:
+		_sleepy = sleepy
+		return
 	var new_timer_wait_time = $SleepTimer.time_left * _sleepy_sleep_timer_speed_modifier
 	if (sleepy):
 		new_timer_wait_time = $SleepTimer.time_left / _sleepy_sleep_timer_speed_modifier
