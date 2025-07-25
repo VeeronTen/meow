@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://h5kbs2cpi87l"]
+[gd_scene load_steps=10 format=3 uid="uid://h5kbs2cpi87l"]
 
 [ext_resource type="Script" uid="uid://cnt6uouyykefm" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bmj8fchi7mol0" path="res://entity/cat/cat.tscn" id="2_h2yge"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://t6abqyf2gbak" path="res://entity/ball/ball.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dhrqc0pma24yv" path="res://entity/lamp/lamp.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://c7uf8iyq2detd" path="res://common/click_ray_cast_2d/click_ray_cast_2d.tscn" id="8_kek77"]
+[ext_resource type="PackedScene" uid="uid://dtwmstubjlkbx" path="res://entity/tv/tv.tscn" id="9_kek77"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
@@ -74,6 +75,10 @@ color = Color(0.106503, 0.213406, 0.351216, 1)
 
 [node name="Lamp" parent="." instance=ExtResource("8_5vw27")]
 position = Vector2(540, -12)
+
+[node name="Tv" parent="." instance=ExtResource("9_kek77")]
+z_index = -2
+position = Vector2(758, 539)
 
 [node name="ClickRayCast2D" parent="." instance=ExtResource("8_kek77")]
 

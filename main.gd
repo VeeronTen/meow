@@ -6,7 +6,7 @@ extends Node2D
 #5.  рефакетор всего потому что оч много всякого в котокоде
 #6.  все расставить при изменении экрана, мяч и тд
 #7.  рандомные звуки по таймеру для эмбиента?
-#9.  если не по ссылке доступ к объектам, подсказки лучше?
+#9.  если не по ссылке доступ к объектам, подсказки лучше? или нужен именно класс нейм
 #11. сраный годот спамит фейковыми изменениями (переносами строк) в *.tscn
 
 
@@ -21,10 +21,13 @@ func _positionEverething():
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		if ($ClickRayCast2D.clickedTo() == "Cat"):
+		var clicked_to = $ClickRayCast2D.clickedTo()
+		if (clicked_to == "Cat"):
 			$Cat.meow()
-		elif ($ClickRayCast2D.clickedTo() == "Lamp"):
+		elif (clicked_to == "Lamp"):
 			pass
+		elif (clicked_to == "Tv"):
+			$Tv.switch_show()
 		elif (event.position.x > $Cat.position.x):
 			$Cat.move(Vector2.RIGHT)
 		else:
