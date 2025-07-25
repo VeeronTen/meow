@@ -14,6 +14,11 @@ func _ready() -> void:
 	_positionEverething()
 	get_viewport().size_changed.connect(_positionEverething)
 
+func _physics_process(delta: float) -> void:
+	var distance_to_tv = $Cat.position.distance_to($Tv.position)
+	var new_noise_shift = 10 - distance_to_tv / 30
+	$Tv.shift_noise_volume(new_noise_shift)
+	
 func _positionEverething():
 	_positionCatToScreenCenter()
 	_positionWalls()

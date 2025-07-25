@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dtwmstubjlkbx"]
+[gd_scene load_steps=20 format=3 uid="uid://dtwmstubjlkbx"]
 
 [ext_resource type="Script" uid="uid://do0ssfh4ybw7y" path="res://entity/tv/tv.gd" id="1_uw3wn"]
 [ext_resource type="Texture2D" uid="uid://ddv11cpbtn8k8" path="res://entity/tv/image/tv.png" id="2_7pxty"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bmhwq5bei5xjc" path="res://entity/cat/image/cat.png" id="3_llt2f"]
 [ext_resource type="Shader" uid="uid://cwjn75827pd5u" path="res://entity/tv/shaders/tv_show_overlay.gdshader" id="4_tsgqh"]
 [ext_resource type="Texture2D" uid="uid://cufb2uafm5kvg" path="res://common/pixel.png" id="6_8ysoa"]
+[ext_resource type="AudioStream" uid="uid://hqempjxwpy8r" path="res://entity/tv/sound/tv_switch.wav" id="8_2smhi"]
+[ext_resource type="AudioStream" uid="uid://bs5irdtrsqdbn" path="res://entity/tv/sound/tv_noise.mp3" id="9_h6oqa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ysoa"]
 shader = ExtResource("4_tsgqh")
@@ -281,5 +283,12 @@ metadata/_edit_lock_ = true
 libraries = {
 &"": SubResource("AnimationLibrary_2smhi")
 }
+
+[node name="SwitchSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_2smhi")
+
+[node name="NoiseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_h6oqa")
+autoplay = true
 
 [connection signal="timeout" from="SwitchShowTimer" to="." method="_on_switch_show_timer_timeout"]
