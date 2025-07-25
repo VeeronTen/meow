@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var distance_to_tv = $Cat.position.distance_to($Tv.position)
-	var new_noise_shift = 10 - distance_to_tv / 30
+	var new_noise_shift = -distance_to_tv / 30
 	$Tv.shift_noise_volume(new_noise_shift)
 	
 func _positionEverething():
