@@ -23,9 +23,9 @@ func _positionEverething():
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		if ($ClickRayCast.clickedTo() == "Cat"):
+		if ($ClickRayCast2D.clickedTo() == "Cat"):
 			$Cat.meow()
-		elif ($ClickRayCast.clickedTo() == "Lamp"):
+		elif ($ClickRayCast2D.clickedTo() == "Lamp"):
 			pass
 		elif (event.position.x > $Cat.position.x):
 			$Cat.move(Vector2.RIGHT)

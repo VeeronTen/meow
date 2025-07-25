@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dbghhurol55l"
-path="res://.godot/imported/lamp_switch.wav-15068f00757e39431c10c0d1118d2d4f.sample"
+path="res://.godot/imported/lamp_switch.wav-28d43ff32e1cb18f7a7979ec2deffba5.sample"
 
 [deps]
 
-source_file="res://sounds/lamp_switch.wav"
-dest_files=["res://.godot/imported/lamp_switch.wav-15068f00757e39431c10c0d1118d2d4f.sample"]
+source_file="res://entity/lamp/sound/lamp_switch.wav"
+dest_files=["res://.godot/imported/lamp_switch.wav-28d43ff32e1cb18f7a7979ec2deffba5.sample"]
 
 [params]
 

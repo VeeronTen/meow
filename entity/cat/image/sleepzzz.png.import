@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbo84b1yr5j27"
-path="res://.godot/imported/soundwave.png-7ded31fa0543729fccf40ca0cffceb0b.ctex"
+uid="uid://7pykj3f0oanu"
+path="res://.godot/imported/sleepzzz.png-3d374e00b2cd858f735478f4ea30ca4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/soundwave.png"
-dest_files=["res://.godot/imported/soundwave.png-7ded31fa0543729fccf40ca0cffceb0b.ctex"]
+source_file="res://entity/cat/image/sleepzzz.png"
+dest_files=["res://.godot/imported/sleepzzz.png-3d374e00b2cd858f735478f4ea30ca4e.ctex"]
 
 [params]
 

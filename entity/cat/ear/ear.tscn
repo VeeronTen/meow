@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmwrckgfsxltn"]
 
-[ext_resource type="Script" uid="uid://by2m2fjsqqq6b" path="res://ear.gd" id="1_l5oxm"]
-[ext_resource type="Texture2D" uid="uid://b8063h46dvxqr" path="res://art/ear.png" id="2_l5oxm"]
+[ext_resource type="Script" uid="uid://by2m2fjsqqq6b" path="res://entity/cat/ear/ear.gd" id="1_l5oxm"]
+[ext_resource type="Texture2D" uid="uid://b8063h46dvxqr" path="res://entity/cat/ear/ear.png" id="2_l5oxm"]
 
 [node name="Ear" type="RigidBody2D"]
 inertia = 0.01

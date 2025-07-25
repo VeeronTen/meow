@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmhwq5bei5xjc"
-path="res://.godot/imported/cat.png-1c5c83ed13d42bfa8222cdf82ef5ee76.ctex"
+uid="uid://dbo84b1yr5j27"
+path="res://.godot/imported/soundwave.png-be42a72828a1b3d575896ea3b2be8bc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cat.png"
-dest_files=["res://.godot/imported/cat.png-1c5c83ed13d42bfa8222cdf82ef5ee76.ctex"]
+source_file="res://entity/boombox/image/soundwave.png"
+dest_files=["res://.godot/imported/soundwave.png-be42a72828a1b3d575896ea3b2be8bc2.ctex"]
 
 [params]
 

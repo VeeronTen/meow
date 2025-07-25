@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cufb2uafm5kvg"
-path="res://.godot/imported/pixel.png-0d196012f0a0c4a82e586c4fd50c187f.ctex"
+uid="uid://deldyib6pxhcl"
+path="res://.godot/imported/boombox.png-119daeedc1bc5423dc88800cbcd542bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/pixel.png"
-dest_files=["res://.godot/imported/pixel.png-0d196012f0a0c4a82e586c4fd50c187f.ctex"]
+source_file="res://entity/boombox/image/boombox.png"
+dest_files=["res://.godot/imported/boombox.png-119daeedc1bc5423dc88800cbcd542bf.ctex"]
 
 [params]
 

@@ -7,3 +7,4 @@ func clickedTo() -> String:
 		return get_collider().name
 	else:
 		return ""
+		

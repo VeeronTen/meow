@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://crhpoopxlspn4"
-path="res://.godot/imported/ballBounce.wav-515063f1d97e73d6c2aa31132be14609.sample"
+path="res://.godot/imported/ballBounce.wav-c9863e8d4cab643767ba5041759c4756.sample"
 
 [deps]
 
-source_file="res://sounds/ballBounce.wav"
-dest_files=["res://.godot/imported/ballBounce.wav-515063f1d97e73d6c2aa31132be14609.sample"]
+source_file="res://entity/ball/sound/ballBounce.wav"
+dest_files=["res://.godot/imported/ballBounce.wav-c9863e8d4cab643767ba5041759c4756.sample"]
 
 [params]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://t6abqyf2gbak"]
 
-[ext_resource type="Script" uid="uid://c7udnenyogpjc" path="res://ball.gd" id="1_41u45"]
-[ext_resource type="Texture2D" uid="uid://bkut2pxhna326" path="res://art/ball.png" id="1_x8fbi"]
-[ext_resource type="AudioStream" uid="uid://crhpoopxlspn4" path="res://sounds/ballBounce.wav" id="3_ktgx5"]
+[ext_resource type="Script" uid="uid://c7udnenyogpjc" path="res://entity/ball/ball.gd" id="1_41u45"]
+[ext_resource type="Texture2D" uid="uid://bkut2pxhna326" path="res://entity/ball/image/ball.png" id="1_x8fbi"]
+[ext_resource type="AudioStream" uid="uid://crhpoopxlspn4" path="res://entity/ball/sound/ballBounce.wav" id="3_ktgx5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x8fbi"]
 

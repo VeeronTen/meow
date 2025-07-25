@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dhrqc0pma24yv"]
 
-[ext_resource type="Texture2D" uid="uid://uu8je6iqts0m" path="res://art/lamp.png" id="1_bekw5"]
-[ext_resource type="Script" uid="uid://c6dukfahybhk6" path="res://lamp.gd" id="1_uno5e"]
-[ext_resource type="AudioStream" uid="uid://dbghhurol55l" path="res://sounds/lamp_switch.wav" id="3_vxcd3"]
+[ext_resource type="Texture2D" uid="uid://uu8je6iqts0m" path="res://entity/lamp/image/lamp.png" id="1_bekw5"]
+[ext_resource type="Script" uid="uid://c6dukfahybhk6" path="res://entity/lamp/lamp.gd" id="1_uno5e"]
+[ext_resource type="AudioStream" uid="uid://dbghhurol55l" path="res://entity/lamp/sound/lamp_switch.wav" id="3_vxcd3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bekw5"]
 
