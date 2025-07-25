@@ -31,6 +31,7 @@ position = Vector2(0, -1)
 rotation = -0.0174533
 
 [node name="Left" parent="Walls" instance=ExtResource("3_h2yge")]
+z_index = 1
 position = Vector2(0, 314)
 scale = Vector2(6, 200)
 
@@ -51,6 +52,7 @@ bus = &"Music"
 [node name="Boomboxes" type="Node2D" parent="."]
 
 [node name="BoomboxLeft" parent="Boomboxes" instance=ExtResource("5_lquwl")]
+z_index = 1
 position = Vector2(-14, 109)
 rotation = 0.194937
 scale = Vector2(-1, 1)
