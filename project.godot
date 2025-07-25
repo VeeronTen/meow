@@ -13,6 +13,7 @@ config_version=5
 config/name="meow"
 run/main_scene="uid://h5kbs2cpi87l"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/image="uid://bmhwq5bei5xjc"
 config/icon="uid://bmhwq5bei5xjc"
 
 [display]
