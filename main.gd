@@ -56,3 +56,7 @@ func _on_tv_screamer_ended() -> void:
 
 func _on_tv_screamer_interrupted() -> void:
 	vingetee_scary_player.stop()
+
+
+func _on_first_fall_first_falled() -> void:
+	$Cat.meow()

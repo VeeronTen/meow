@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://h5kbs2cpi87l"]
+[gd_scene load_steps=21 format=3 uid="uid://h5kbs2cpi87l"]
 
 [ext_resource type="Script" uid="uid://cnt6uouyykefm" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bmj8fchi7mol0" path="res://entity/cat/cat.tscn" id="2_h2yge"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ux1oynuu3rm0" path="res://Lukrembo - Donut.mp3" id="4_1bvp3"]
 [ext_resource type="Shader" uid="uid://byx7da4uvuktp" path="res://abberation.gdshader" id="4_w48qg"]
 [ext_resource type="PackedScene" uid="uid://d2gkmske1vsr3" path="res://entity/boombox/boombox.tscn" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://b532guolvfh5x" path="res://first_fall.gd" id="5_vivmo"]
 [ext_resource type="PackedScene" uid="uid://t6abqyf2gbak" path="res://entity/ball/ball.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dhrqc0pma24yv" path="res://entity/lamp/lamp.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://c7uf8iyq2detd" path="res://common/click_ray_cast_2d/click_ray_cast_2d.tscn" id="8_kek77"]
@@ -134,6 +135,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="FirstFall" type="RayCast2D" parent="Cat"]
+script = ExtResource("5_vivmo")
+
 [node name="Walls" type="Node2D" parent="."]
 position = Vector2(0, -1)
 rotation = -0.0174533
@@ -209,6 +213,7 @@ _night = NodePath("../NightFilter")
 [connection signal="awaked" from="Cat" to="Tv" method="_on_cat_awaked"]
 [connection signal="awaked" from="Cat" to="SecretScenario" method="_on_cat_awaked"]
 [connection signal="sleeped" from="Cat" to="SecretScenario" method="_on_cat_sleeped"]
+[connection signal="first_falled" from="Cat/FirstFall" to="." method="_on_first_fall_first_falled"]
 [connection signal="switched" from="Lamp" to="." method="_on_lamp_switched"]
 [connection signal="screamer_ended" from="Tv" to="." method="_on_tv_screamer_ended"]
 [connection signal="screamer_interrupted" from="Tv" to="." method="_on_tv_screamer_interrupted"]
