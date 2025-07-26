@@ -95,7 +95,7 @@ position = Vector2(136, 536)
 
 [node name="MouseHole" parent="." instance=ExtResource("11_efxa6")]
 z_index = -1
-position = Vector2(1031, 573)
+position = Vector2(993, 581)
 
 [node name="SecretScenario" type="Node" parent="." node_paths=PackedStringArray("_mouse_hole", "_ball", "_night")]
 script = ExtResource("12_dg77c")
