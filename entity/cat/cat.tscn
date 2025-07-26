@@ -37,6 +37,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [1e-05]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Eyelids:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-8.0]
+}
 
 [sub_resource type="Animation" id="Animation_2v165"]
 resource_name = "blink"
@@ -51,7 +63,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.233333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [1e-05, 0.37032, 1e-05]
+"values": [1e-05, 20.0, 1e-05]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Eyelids:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-8.0, -4.0, -8.0]
 }
 
 [sub_resource type="Animation" id="Animation_eyw7o"]
@@ -86,7 +110,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1e-05, 0.37032]
+"values": [1e-05, 20.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Eyelids:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-8.0, -4.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2hdoq"]
@@ -122,6 +158,7 @@ animation = &"sleeping"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_7rjga"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_eyw7o"]
+graph_offset = Vector2(-539.273, 572.535)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_2u0g4")
 nodes/Add2/position = Vector2(672, 416)
 nodes/Blink/node = SubResource("AnimationNodeAnimation_2v165")
@@ -161,13 +198,11 @@ position = Vector2(5, 15)
 scale = Vector2(5, 1e-05)
 texture = ExtResource("5_2u0g4")
 
-[node name="Eyelids" type="ColorRect" parent="Pivot"]
-offset_left = -23.0
-offset_top = -9.0
-offset_right = 17.0
-offset_bottom = 31.0
-scale = Vector2(1.3, 1e-05)
-color = Color(0, 0, 0, 1)
+[node name="Eyelids" type="Sprite2D" parent="Pivot"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -8)
+scale = Vector2(54.84, 1e-05)
+texture = ExtResource("5_2u0g4")
 
 [node name="SleepParticles" type="CPUParticles2D" parent="Pivot"]
 position = Vector2(-6, -25)
