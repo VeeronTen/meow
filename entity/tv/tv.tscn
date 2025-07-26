@@ -283,6 +283,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Screen/ScaryShow:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.498039]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Screen/ScaryShow/Eyes:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_mclhj"]
 resource_name = "screamer"
@@ -322,6 +346,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(4.56055, 4.56055)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Screen/ScaryShow:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.43333, 4.83333),
+"transitions": PackedFloat32Array(0.466516, 5.46415, 1),
+"update": 0,
+"values": [0.498039, 0.168627, 0.831373]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Screen/ScaryShow/Eyes:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rwe48"]
@@ -363,8 +411,24 @@ texture = ExtResource("6_8ysoa")
 metadata/_edit_lock_ = true
 
 [node name="ScaryShow" type="Sprite2D" parent="Screen"]
+modulate = Color(1, 1, 1, 0.498039)
 position = Vector2(-19.6767, -1.63973)
 texture = ExtResource("7_wne11")
+
+[node name="Eyes" type="Node2D" parent="Screen/ScaryShow"]
+position = Vector2(0.989894, 4.42897)
+
+[node name="LeftEye" type="Sprite2D" parent="Screen/ScaryShow/Eyes"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-2.00205, 4.76837e-07)
+scale = Vector2(1, 1.96988)
+texture = ExtResource("6_8ysoa")
+
+[node name="RightEye" type="Sprite2D" parent="Screen/ScaryShow/Eyes"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(2.00205, 4.22825e-07)
+scale = Vector2(1, 1.97)
+texture = ExtResource("6_8ysoa")
 
 [node name="PointLight2D" type="PointLight2D" parent="Screen"]
 position = Vector2(0, -0.936988)

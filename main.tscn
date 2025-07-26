@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://h5kbs2cpi87l"]
+[gd_scene load_steps=17 format=3 uid="uid://h5kbs2cpi87l"]
 
 [ext_resource type="Script" uid="uid://cnt6uouyykefm" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bmj8fchi7mol0" path="res://entity/cat/cat.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://mpfnewjy5jjd" path="res://entity/wall/wall.tscn" id="3_h2yge"]
+[ext_resource type="Shader" uid="uid://bdkbchulrrv7a" path="res://vignette.gdshader" id="3_ycdy4"]
 [ext_resource type="AudioStream" uid="uid://ux1oynuu3rm0" path="res://Lukrembo - Donut.mp3" id="4_1bvp3"]
+[ext_resource type="Shader" uid="uid://byx7da4uvuktp" path="res://abberation.gdshader" id="4_w48qg"]
 [ext_resource type="PackedScene" uid="uid://d2gkmske1vsr3" path="res://entity/boombox/boombox.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://t6abqyf2gbak" path="res://entity/ball/ball.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dhrqc0pma24yv" path="res://entity/lamp/lamp.tscn" id="8_5vw27"]
@@ -12,6 +14,18 @@
 [ext_resource type="PackedScene" uid="uid://dtwmstubjlkbx" path="res://entity/tv/tv.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://d4ctlwk7pmuuk" path="res://entity/mouse_hole/mouse_hole.tscn" id="11_efxa6"]
 [ext_resource type="Script" uid="uid://bybgstefv7s3f" path="res://secret_scenario.gd" id="12_dg77c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w48qg"]
+shader = ExtResource("3_ycdy4")
+shader_parameter/inner_radius = 0.035
+shader_parameter/outer_radius = 0.85
+shader_parameter/vignette_strength = 0.4
+shader_parameter/dither_strength = 0.03
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ycdy4"]
+shader = ExtResource("4_w48qg")
+shader_parameter/strength = 0.2
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
@@ -29,7 +43,28 @@ mouse_filter = 1
 position = Vector2(560, 277)
 
 [node name="Camera2D" type="Camera2D" parent="Cat"]
+limit_left = -130
+limit_right = 1300
 limit_bottom = 700
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Cat/Camera2D"]
+process_mode = 4
+
+[node name="Vignette" type="ColorRect" parent="Cat/Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_w48qg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Abberation" type="ColorRect" parent="Cat/Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_ycdy4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Walls" type="Node2D" parent="."]
 position = Vector2(0, -1)
