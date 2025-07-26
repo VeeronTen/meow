@@ -5,7 +5,6 @@ extends Node2D
 #динамические размиеры
 #print(DisplayServer.screen_get_size())
 #print(DisplayServer.window_get_size())
-#во время падения всрато все трясет
 
 @onready var vingetee_scary_player = $Cat/Camera2D/VingetteScaryPlayer
 

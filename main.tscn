@@ -117,7 +117,10 @@ position = Vector2(560, -993)
 limit_left = -130
 limit_right = 1300
 limit_bottom = 700
-position_smoothing_enabled = true
+position_smoothing_speed = 100.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_horizontal_offset = 0.4
 
 [node name="VingetteScaryPlayer" type="AnimationPlayer" parent="Cat/Camera2D"]
 root_node = NodePath("../CanvasLayer/Vignette")
