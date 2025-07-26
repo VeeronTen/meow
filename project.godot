@@ -11,10 +11,17 @@ config_version=5
 [application]
 
 config/name="meow"
-run/main_scene="uid://h5kbs2cpi87l"
+run/main_scene="uid://c7jh4300b1ads"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://cufb2uafm5kvg"
 config/icon="uid://bmhwq5bei5xjc"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 

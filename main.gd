@@ -1,9 +1,11 @@
 extends Node2D
 
-#4.  оформление с лоадером
-
 # все постоянные чеки сменить на сигналы
 #5.  рефакетор всего потому что оч много всякого в котокоде
+#динамические размиеры
+#print(DisplayServer.screen_get_size())
+#print(DisplayServer.window_get_size())
+#во время падения всрато все трясет
 
 @onready var vingetee_scary_player = $Cat/Camera2D/VingetteScaryPlayer
 

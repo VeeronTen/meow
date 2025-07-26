@@ -101,8 +101,17 @@ offset_bottom = -1604.0
 scale = Vector2(100, 100)
 mouse_filter = 1
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -1524.0
+offset_top = -4500.0
+offset_right = -1484.0
+offset_bottom = -4460.0
+scale = Vector2(100, 100)
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
 [node name="Cat" parent="." instance=ExtResource("2_h2yge")]
-position = Vector2(560, 277)
+position = Vector2(560, -993)
 
 [node name="Camera2D" type="Camera2D" parent="Cat"]
 limit_left = -130
@@ -157,8 +166,10 @@ rotation = -1.5843
 scale = Vector2(6, 200)
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(537, 197)
 stream = ExtResource("4_1bvp3")
 autoplay = true
+max_distance = 1700.0
 bus = &"Music"
 
 [node name="Boomboxes" type="Node2D" parent="."]
@@ -189,7 +200,7 @@ scale = Vector2(100, 100)
 color = Color(0.106503, 0.213406, 0.351216, 1)
 
 [node name="Lamp" parent="." instance=ExtResource("8_5vw27")]
-position = Vector2(540, -12)
+position = Vector2(540, -45)
 
 [node name="Tv" parent="." instance=ExtResource("9_kek77")]
 z_index = -2
