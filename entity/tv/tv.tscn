@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dtwmstubjlkbx"]
+[gd_scene load_steps=24 format=3 uid="uid://dtwmstubjlkbx"]
 
 [ext_resource type="Script" uid="uid://do0ssfh4ybw7y" path="res://entity/tv/tv.gd" id="1_uw3wn"]
 [ext_resource type="Texture2D" uid="uid://ddv11cpbtn8k8" path="res://entity/tv/image/tv.png" id="2_7pxty"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bmhwq5bei5xjc" path="res://entity/cat/image/cat.png" id="3_llt2f"]
 [ext_resource type="Shader" uid="uid://cwjn75827pd5u" path="res://entity/tv/shaders/tv_show_overlay.gdshader" id="4_tsgqh"]
 [ext_resource type="Texture2D" uid="uid://cufb2uafm5kvg" path="res://common/pixel.png" id="6_8ysoa"]
+[ext_resource type="Texture2D" uid="uid://chle2hphsscub" path="res://entity/mouse_hole/image/mouse.png" id="7_wne11"]
 [ext_resource type="AudioStream" uid="uid://hqempjxwpy8r" path="res://entity/tv/sound/tv_switch.wav" id="8_2smhi"]
 [ext_resource type="AudioStream" uid="uid://bs5irdtrsqdbn" path="res://entity/tv/sound/tv_noise.mp3" id="9_h6oqa"]
 
@@ -22,6 +23,45 @@ shader_parameter/amount = 40.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsgqh"]
 size = Vector2(20, 20.118)
+
+[sub_resource type="Animation" id="Animation_2smhi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen/Show:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen/Show:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.850082, 0.850082)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Screen/Show:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.234247, -1.17123)]
+}
 
 [sub_resource type="Animation" id="Animation_8ysoa"]
 resource_name = "show_1"
@@ -61,45 +101,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 6.28319]
-}
-
-[sub_resource type="Animation" id="Animation_2smhi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Screen/Show:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Screen/Show:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.850082, 0.850082)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Screen/Show:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.234247, -1.17123)]
 }
 
 [sub_resource type="Animation" id="Animation_h6oqa"]
@@ -233,6 +234,91 @@ _data = {
 &"show_4": SubResource("Animation_fw02q")
 }
 
+[sub_resource type="Animation" id="Animation_mclhj"]
+resource_name = "screamer"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:_screamer_noise_volume_boost")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.7, 4.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 20, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen/ScaryShow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4.43333, 4.86667),
+"transitions": PackedFloat32Array(1, 1, 6.06286, 1),
+"update": 0,
+"values": [Vector2(-19.6767, -1.63973), Vector2(2.57672, -6.09042), Vector2(2.57672, -1.17123), Vector2(-2.34247, -21.785)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Screen/ScaryShow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.73333, 4.86667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(4.56055, 4.56055)]
+}
+
+[sub_resource type="Animation" id="Animation_rwe48"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:_screamer_noise_volume_boost")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen/ScaryShow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-19.6767, -1.63973)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Screen/ScaryShow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rwe48"]
+_data = {
+&"RESET": SubResource("Animation_rwe48"),
+&"screamer": SubResource("Animation_mclhj")
+}
+
 [node name="Tv" type="StaticBody2D"]
 scale = Vector2(4.269, 4.269)
 collision_layer = 8388608
@@ -265,6 +351,10 @@ scale = Vector2(31.6914, 16.686)
 texture = ExtResource("6_8ysoa")
 metadata/_edit_lock_ = true
 
+[node name="ScaryShow" type="Sprite2D" parent="Screen"]
+position = Vector2(-19.6767, -1.63973)
+texture = ExtResource("7_wne11")
+
 [node name="TvSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_7pxty")
 metadata/_edit_lock_ = true
@@ -291,4 +381,10 @@ stream = ExtResource("8_2smhi")
 stream = ExtResource("9_h6oqa")
 autoplay = true
 
+[node name="ScaryChannelPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rwe48")
+}
+
 [connection signal="timeout" from="SwitchShowTimer" to="." method="_on_switch_show_timer_timeout"]
+[connection signal="animation_finished" from="ScaryChannelPlayer" to="." method="_on_scary_channel_player_animation_finished"]

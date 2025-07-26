@@ -1,5 +1,8 @@
 extends RigidBody2D
 
+signal sleeped
+signal awaked
+
 @export var movePower: int = 400
 @export var moeowPower: int = 100
 @export var meowedScale: float = 1.2
@@ -90,6 +93,7 @@ func _on_sleep_timer_timeout() -> void:
 func _sleep():
 	$AnimationTree.set("parameters/SleepingBlend/blend_amount", 1.0)
 	$Pivot/SleepParticles.emitting = true
+	sleeped.emit()
 	
 func wakeUp():
 	var new_timer_wait_time = _default_sleep_timer
@@ -97,8 +101,11 @@ func wakeUp():
 		new_timer_wait_time = _default_sleep_timer / _sleepy_sleep_timer_speed_modifier
 	$SleepTimer.wait_time = new_timer_wait_time
 	$SleepTimer.start()
+	if $Pivot/SleepParticles.emitting:
+		awaked.emit()
 	$Pivot/SleepParticles.emitting = false
 	$AnimationTree.set("parameters/SleepingBlend/blend_amount", 0)
+
 	
 func set_sleepy(sleepy: bool):
 	if $SleepTimer.time_left == 0.0:

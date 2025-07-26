@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://h5kbs2cpi87l"]
+[gd_scene load_steps=13 format=3 uid="uid://h5kbs2cpi87l"]
 
 [ext_resource type="Script" uid="uid://cnt6uouyykefm" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bmj8fchi7mol0" path="res://entity/cat/cat.tscn" id="2_h2yge"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b6tvcpuf4e6i1" path="res://entity/sofa/sofa.tscn" id="9_4c57u"]
 [ext_resource type="PackedScene" uid="uid://dtwmstubjlkbx" path="res://entity/tv/tv.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://d4ctlwk7pmuuk" path="res://entity/mouse_hole/mouse_hole.tscn" id="11_efxa6"]
+[ext_resource type="Script" uid="uid://bybgstefv7s3f" path="res://secret_scenario.gd" id="12_dg77c"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
@@ -93,4 +94,16 @@ position = Vector2(136, 536)
 z_index = -1
 position = Vector2(1031, 573)
 
+[node name="SecretScenario" type="Node" parent="." node_paths=PackedStringArray("_mouse_hole", "_ball", "_night")]
+script = ExtResource("12_dg77c")
+_mouse_hole = NodePath("../MouseHole")
+_ball = NodePath("../Ball")
+_night = NodePath("../NightFilter")
+
+[connection signal="awaked" from="Cat" to="Tv" method="_on_cat_awaked"]
+[connection signal="awaked" from="Cat" to="SecretScenario" method="_on_cat_awaked"]
+[connection signal="sleeped" from="Cat" to="SecretScenario" method="_on_cat_sleeped"]
 [connection signal="switched" from="Lamp" to="." method="_on_lamp_switched"]
+[connection signal="screamer_end" from="Tv" to="." method="_on_tv_screamer_end"]
+[connection signal="scenario_not_ready" from="SecretScenario" to="Tv" method="_on_secret_scenario_scenario_not_ready"]
+[connection signal="scenario_ready" from="SecretScenario" to="Tv" method="_on_secret_scenario_scenario_ready"]
