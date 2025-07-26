@@ -38,8 +38,8 @@ scale = Vector2(3.48, 3.4)
 shape = SubResource("RectangleShape2D_bekw5")
 
 [node name="PointLight2D" type="PointLight2D" parent="Lamp"]
-position = Vector2(0, -15)
-scale = Vector2(31.84, 31.84)
+position = Vector2(0, -14)
+scale = Vector2(37, 37)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_qfipa")
 

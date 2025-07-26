@@ -1,6 +1,8 @@
 extends Node2D
 
-signal screamer_end
+signal screamer_started
+signal screamer_ended
+signal screamer_interrupted
 
 @onready var _default_scale = scale
 @onready var _default_rotation = rotation
@@ -52,6 +54,7 @@ func _show_regular_show():
 	$Screen/Noise.visible = false
 	
 func _show_screamer():
+	screamer_started.emit()
 	$Screen/ScaryShow.visible = true
 	$ScaryChannelPlayer.play("screamer")
 
@@ -61,8 +64,9 @@ func _on_secret_scenario_scenario_ready() -> void:
 func _on_secret_scenario_scenario_not_ready() -> void:
 	_screamer_allowed = false
 	if $Screen/ScaryShow.visible:
+		screamer_interrupted.emit()
 		$ScaryChannelPlayer.stop()
 		switch_show()
 	
 func _on_scary_channel_player_animation_finished(_anim_name: StringName) -> void:
-	screamer_end.emit()
+	screamer_ended.emit()

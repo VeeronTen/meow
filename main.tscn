@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://h5kbs2cpi87l"]
+[gd_scene load_steps=20 format=3 uid="uid://h5kbs2cpi87l"]
 
 [ext_resource type="Script" uid="uid://cnt6uouyykefm" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bmj8fchi7mol0" path="res://entity/cat/cat.tscn" id="2_h2yge"]
@@ -14,6 +14,67 @@
 [ext_resource type="PackedScene" uid="uid://dtwmstubjlkbx" path="res://entity/tv/tv.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://d4ctlwk7pmuuk" path="res://entity/mouse_hole/mouse_hole.tscn" id="11_efxa6"]
 [ext_resource type="Script" uid="uid://bybgstefv7s3f" path="res://secret_scenario.gd" id="12_dg77c"]
+
+[sub_resource type="Animation" id="Animation_vivmo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/vignette_strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/dither_strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.03]
+}
+
+[sub_resource type="Animation" id="Animation_w48qg"]
+resource_name = "scary"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/vignette_strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.4, 2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/dither_strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.03, 0.44]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2cqfq"]
+_data = {
+&"RESET": SubResource("Animation_vivmo"),
+&"scary": SubResource("Animation_w48qg")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w48qg"]
 shader = ExtResource("3_ycdy4")
@@ -46,6 +107,13 @@ position = Vector2(560, 277)
 limit_left = -130
 limit_right = 1300
 limit_bottom = 700
+position_smoothing_enabled = true
+
+[node name="VingetteScaryPlayer" type="AnimationPlayer" parent="Cat/Camera2D"]
+root_node = NodePath("../CanvasLayer/Vignette")
+libraries = {
+&"": SubResource("AnimationLibrary_2cqfq")
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Cat/Camera2D"]
 process_mode = 4
@@ -142,6 +210,8 @@ _night = NodePath("../NightFilter")
 [connection signal="awaked" from="Cat" to="SecretScenario" method="_on_cat_awaked"]
 [connection signal="sleeped" from="Cat" to="SecretScenario" method="_on_cat_sleeped"]
 [connection signal="switched" from="Lamp" to="." method="_on_lamp_switched"]
-[connection signal="screamer_end" from="Tv" to="." method="_on_tv_screamer_end"]
+[connection signal="screamer_ended" from="Tv" to="." method="_on_tv_screamer_ended"]
+[connection signal="screamer_interrupted" from="Tv" to="." method="_on_tv_screamer_interrupted"]
+[connection signal="screamer_started" from="Tv" to="." method="_on_tv_screamer_started"]
 [connection signal="scenario_not_ready" from="SecretScenario" to="Tv" method="_on_secret_scenario_scenario_not_ready"]
 [connection signal="scenario_ready" from="SecretScenario" to="Tv" method="_on_secret_scenario_scenario_ready"]

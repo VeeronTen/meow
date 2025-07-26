@@ -1,13 +1,13 @@
 extends Node2D
 
 #4.  оформление с лоадером
-#веньетка для скримера?
-
 
 # все постоянные чеки сменить на сигналы
 #5.  рефакетор всего потому что оч много всякого в котокоде
 #9.  если не по ссылке доступ к объектам, подсказки лучше? или нужен именно класс нейм
 #11. сраный годот спамит фейковыми изменениями (переносами строк) в *.tscn
+
+@onready var vingetee_scary_player = $Cat/Camera2D/VingetteScaryPlayer
 
 var distance_to_scare_mouse = 300
 
@@ -46,7 +46,15 @@ func changeDayTime():
 func _on_lamp_switched() -> void:
 	changeDayTime()
 
-func _on_tv_screamer_end() -> void:
+func _on_tv_screamer_started() -> void:
+	vingetee_scary_player.play("scary")
+	
+func _on_tv_screamer_ended() -> void:
+	vingetee_scary_player.stop()
 	$Cat.meow()
 	$SecretScenario.ended()
 	$MouseHole.hide_forever()
+
+
+func _on_tv_screamer_interrupted() -> void:
+	vingetee_scary_player.stop()
