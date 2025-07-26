@@ -16,10 +16,6 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://cufb2uafm5kvg"
 config/icon="uid://bmhwq5bei5xjc"
 
-[display]
-
-window/stretch/aspect="ignore"
-
 [input]
 
 ui_left={

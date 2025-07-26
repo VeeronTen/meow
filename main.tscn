@@ -28,6 +28,9 @@ mouse_filter = 1
 [node name="Cat" parent="." instance=ExtResource("2_h2yge")]
 position = Vector2(560, 277)
 
+[node name="Camera2D" type="Camera2D" parent="Cat"]
+limit_bottom = 700
+
 [node name="Walls" type="Node2D" parent="."]
 position = Vector2(0, -1)
 rotation = -0.0174533

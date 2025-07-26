@@ -42,7 +42,7 @@ func _lampEnoughToSwitch() -> bool:
 	return draggedDown and distnceFromStartEnough
 	
 func _applyDragForce():
-	var mouse_position = get_viewport().get_mouse_position()
+	var mouse_position = get_global_mouse_position()
 	var displacement_to_mouse = mouse_position - $Lamp.global_position
 	var spring_force = displacement_to_mouse * spring_constant
 	var damping_force = -$Lamp.linear_velocity * damping_constant
