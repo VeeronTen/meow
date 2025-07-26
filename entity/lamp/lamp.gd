@@ -1,15 +1,17 @@
 extends Node2D
 
-signal switched
+signal light_switched(enabled: bool)
 
 @export var spring_constant: float = 100
 @export var damping_constant: float = 5
 @export var extra_distance_to_switch: float = 80
 
 @onready var original_lamp_position: Vector2 = $Lamp.position
+@onready var _light = $Lamp/PointLight2D
 
 var dragging = false
 var switchedThisDrag = false
+var _enabled = false
 
 func _process(_delta: float) -> void:
 	queue_redraw()
@@ -18,7 +20,7 @@ func _physics_process(_delta: float) -> void:
 	if dragging:
 		_applyDragForce()
 		if _lampEnoughToSwitch() and not switchedThisDrag:
-			_switch()
+			switch()
 		
 func _draw() -> void:
 	draw_line(Vector2.ZERO, $Lamp.position + Vector2(-4, 0) , Color(0, 0, 0), 7)
@@ -36,6 +38,16 @@ func  _unhandled_input(event: InputEvent) -> void:
 		if event.is_released():
 			_stopDragging()
 
+func switch():
+	switchedThisDrag = true
+	$SwitchSound.play()
+	if (_enabled):
+		_enabled = false
+	else:
+		_enabled = true
+	_light.visible = _enabled
+	light_switched.emit(_enabled)
+	
 func _lampEnoughToSwitch() -> bool:
 	var draggedDown = $Lamp.position.y - original_lamp_position.y > 0
 	var distnceFromStartEnough = $Lamp.position.distance_to(original_lamp_position) > extra_distance_to_switch
@@ -55,7 +67,3 @@ func _stopDragging():
 	dragging = false
 	switchedThisDrag = false
 	
-func _switch():
-	switchedThisDrag = true
-	$SwitchSound.play()
-	switched.emit()

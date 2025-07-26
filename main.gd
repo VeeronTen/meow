@@ -5,7 +5,6 @@ extends Node2D
 #лагает на телефоне
 #мяч улетел
 #мяч тяжело доставать, упросттить либо подсказкой либо интеракцией с креслом
-# текст секрет увиден в ночном режэиме где не светит лампа
 # перерисовать уши для МЫШЫ
 
 # все постоянные чеки сменить на сигналы
@@ -42,16 +41,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			$Cat.move(Vector2.LEFT)
 	
-func changeDayTime():
-	var changeToNight = !$NightFilter.visible
-	$NightFilter.visible = changeToNight
-	$Boomboxes/BoomboxLeft.changeMusicVolume(changeToNight) 
-	$Boomboxes/BoomboxRight.changeMusicVolume(changeToNight)
-	$Cat.set_sleepy(changeToNight)
+func changeDayTime(day: bool):
+	var night = !day
+	$NightFilter.visible = night
+	$Boomboxes/BoomboxLeft.changeMusicVolume(night) 
+	$Boomboxes/BoomboxRight.changeMusicVolume(night)
+	$Cat.set_sleepy(night)
 
-
-func _on_lamp_switched() -> void:
-	changeDayTime()
+func _on_lamp_light_switched(enabled: bool) -> void:
+	changeDayTime(!enabled)
 
 func _on_tv_screamer_started() -> void:
 	vingetee_scary_player.play("scary")
@@ -61,6 +59,9 @@ func _on_tv_screamer_ended() -> void:
 	$Cat.meow()
 	$SecretScenario.ended()
 	$MouseHole.hide_forever()
+	changeDayTime(true)
+	$Lamp.switch()
+	$SecretLabel.found()
 
 
 func _on_tv_screamer_interrupted() -> void:

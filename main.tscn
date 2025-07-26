@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://h5kbs2cpi87l"]
+[gd_scene load_steps=22 format=3 uid="uid://h5kbs2cpi87l"]
 
 [ext_resource type="Script" uid="uid://cnt6uouyykefm" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bmj8fchi7mol0" path="res://entity/cat/cat.tscn" id="2_h2yge"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dtwmstubjlkbx" path="res://entity/tv/tv.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://d4ctlwk7pmuuk" path="res://entity/mouse_hole/mouse_hole.tscn" id="11_efxa6"]
 [ext_resource type="Script" uid="uid://bybgstefv7s3f" path="res://secret_scenario.gd" id="12_dg77c"]
+[ext_resource type="PackedScene" uid="uid://d3biuyunr4heq" path="res://entity/secret_label/secret_label.tscn" id="16_2cqfq"]
 
 [sub_resource type="Animation" id="Animation_vivmo"]
 length = 0.001
@@ -224,11 +225,14 @@ _mouse_hole = NodePath("../MouseHole")
 _ball = NodePath("../Ball")
 _night = NodePath("../NightFilter")
 
+[node name="SecretLabel" parent="." instance=ExtResource("16_2cqfq")]
+position = Vector2(370, 374)
+
 [connection signal="awaked" from="Cat" to="Tv" method="_on_cat_awaked"]
 [connection signal="awaked" from="Cat" to="SecretScenario" method="_on_cat_awaked"]
 [connection signal="sleeped" from="Cat" to="SecretScenario" method="_on_cat_sleeped"]
 [connection signal="first_falled" from="Cat/FirstFall" to="." method="_on_first_fall_first_falled"]
-[connection signal="switched" from="Lamp" to="." method="_on_lamp_switched"]
+[connection signal="light_switched" from="Lamp" to="." method="_on_lamp_light_switched"]
 [connection signal="screamer_ended" from="Tv" to="." method="_on_tv_screamer_ended"]
 [connection signal="screamer_interrupted" from="Tv" to="." method="_on_tv_screamer_interrupted"]
 [connection signal="screamer_started" from="Tv" to="." method="_on_tv_screamer_started"]

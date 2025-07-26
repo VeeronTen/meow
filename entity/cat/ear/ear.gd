@@ -1,6 +1,5 @@
-extends RigidBody2D
-
 class_name Ear
+extends RigidBody2D
 
 @onready var default_gravity_scale = gravity_scale
 @onready var default_linear_dampe = linear_damp

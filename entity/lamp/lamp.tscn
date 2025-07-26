@@ -30,6 +30,7 @@ position = Vector2(0, 147)
 collision_layer = 8388608
 collision_mask = 0
 input_pickable = true
+linear_velocity = Vector2(100, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Lamp"]
 scale = Vector2(5.6, 5.6)
@@ -40,6 +41,7 @@ scale = Vector2(3.48, 3.4)
 shape = SubResource("RectangleShape2D_bekw5")
 
 [node name="PointLight2D" type="PointLight2D" parent="Lamp"]
+visible = false
 position = Vector2(0, -14)
 scale = Vector2(37, 37)
 shadow_enabled = true
