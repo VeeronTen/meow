@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dtwmstubjlkbx"]
+[gd_scene load_steps=26 format=3 uid="uid://dtwmstubjlkbx"]
 
 [ext_resource type="Script" uid="uid://do0ssfh4ybw7y" path="res://entity/tv/tv.gd" id="1_uw3wn"]
 [ext_resource type="Texture2D" uid="uid://ddv11cpbtn8k8" path="res://entity/tv/image/tv.png" id="2_7pxty"]
@@ -20,6 +20,17 @@ shader_parameter/scanline_count = 50.21
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_61oyv"]
 shader = ExtResource("3_agf18")
 shader_parameter/amount = 40.0
+
+[sub_resource type="Gradient" id="Gradient_wne11"]
+offsets = PackedFloat32Array(0.00298507, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fw02q"]
+gradient = SubResource("Gradient_wne11")
+width = 34
+height = 18
+fill = 2
+fill_from = Vector2(0.516239, 0.487179)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsgqh"]
 size = Vector2(20, 20.118)
@@ -354,6 +365,10 @@ metadata/_edit_lock_ = true
 [node name="ScaryShow" type="Sprite2D" parent="Screen"]
 position = Vector2(-19.6767, -1.63973)
 texture = ExtResource("7_wne11")
+
+[node name="PointLight2D" type="PointLight2D" parent="Screen"]
+position = Vector2(0, -0.936988)
+texture = SubResource("GradientTexture2D_fw02q")
 
 [node name="TvSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_7pxty")
