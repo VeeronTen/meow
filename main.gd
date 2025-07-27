@@ -1,17 +1,18 @@
 extends Node2D
 
 #улучшить ридми
-#лагает на телефоне
-#мяч улетел
-#мяч тяжело доставать, упросттить либо подсказкой либо интеракцией с креслом
-# если будет аутро, то выключить музыку в конце
-#всегда пролаг при падении первом в вебе
+#мяч улетает
+# отдельная ветка для сборок
 
+#лагает на телефоне
+#мяч тяжело доставать на мобилке
+#всегда пролаг при падении первом в вебе из-за света
 #динамические размиеры
 #print(DisplayServer.screen_get_size())
 #print(DisplayServer.window_get_size())
 
 @onready var vingetee_scary_player = $Cat/Camera2D/VingetteScaryPlayer
+@onready var _outro_player = $OutroPlayer
 
 var distance_to_scare_mouse = 300
 
@@ -57,10 +58,16 @@ func _on_tv_screamer_ended() -> void:
 	$Cat.meow()
 	$SecretScenario.ended()
 	$MouseHole.hide_forever()
+	$MusicPlayer.stop()
 	changeDayTime(true)
 	$Lamp.switch()
 	$SecretLabel.found()
-
+	for i in range(3):
+		_outro_player.stop()
+		_outro_player.play()
+		await get_tree().create_timer(1).timeout
+		_outro_player.volume_db += 8
+	get_tree().change_scene_to_file("res://outro/outro.tscn")
 
 func _on_tv_screamer_interrupted() -> void:
 	vingetee_scary_player.stop()

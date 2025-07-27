@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://di6pvah36xlpa"]
+
+[ext_resource type="Texture2D" uid="uid://bhq7oovcxwe48" path="res://entity/secret_label/image/secret_label_found.png" id="1_mng0s"]
+[ext_resource type="Script" uid="uid://bu2l6sivoloap" path="res://outro/outro.gd" id="1_yw0tw"]
+[ext_resource type="Texture2D" uid="uid://c08it7qqdvc75" path="res://outro/image/ty_for_playing.png" id="3_24x1m"]
+[ext_resource type="AudioStream" uid="uid://ux1oynuu3rm0" path="res://Lukrembo - Donut.mp3" id="4_24x1m"]
+
+[node name="Outro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yw0tw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Slide1" type="Sprite2D" parent="ColorRect/HBoxContainer"]
+position = Vector2(84, 51)
+scale = Vector2(6.2, 6.2)
+texture = ExtResource("1_mng0s")
+
+[node name="Slide2" type="Sprite2D" parent="ColorRect/HBoxContainer"]
+visible = false
+position = Vector2(26, 79)
+scale = Vector2(7.28, 7.28)
+texture = ExtResource("3_24x1m")
+
+[node name="ChangeSlideTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Ost" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_24x1m")
+volume_db = -20.0
+autoplay = true
+
+[connection signal="timeout" from="ChangeSlideTimer" to="." method="_on_change_slide_timer_timeout"]

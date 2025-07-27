@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://h5kbs2cpi87l"]
+[gd_scene load_steps=23 format=3 uid="uid://h5kbs2cpi87l"]
 
 [ext_resource type="Script" uid="uid://cnt6uouyykefm" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bmj8fchi7mol0" path="res://entity/cat/cat.tscn" id="2_h2yge"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://d4ctlwk7pmuuk" path="res://entity/mouse_hole/mouse_hole.tscn" id="11_efxa6"]
 [ext_resource type="Script" uid="uid://bybgstefv7s3f" path="res://secret_scenario.gd" id="12_dg77c"]
 [ext_resource type="PackedScene" uid="uid://d3biuyunr4heq" path="res://entity/secret_label/secret_label.tscn" id="16_2cqfq"]
+[ext_resource type="AudioStream" uid="uid://dbghhurol55l" path="res://entity/lamp/sound/lamp_switch.wav" id="17_yaehf"]
 
 [sub_resource type="Animation" id="Animation_vivmo"]
 length = 0.001
@@ -227,6 +228,10 @@ _night = NodePath("../NightFilter")
 
 [node name="SecretLabel" parent="." instance=ExtResource("16_2cqfq")]
 position = Vector2(370, 374)
+
+[node name="OutroPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_yaehf")
+volume_db = 15.0
 
 [connection signal="awaked" from="Cat" to="Tv" method="_on_cat_awaked"]
 [connection signal="awaked" from="Cat" to="SecretScenario" method="_on_cat_awaked"]
