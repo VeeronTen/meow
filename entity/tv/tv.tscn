@@ -269,7 +269,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-19.6767, -1.63973)]
+"values": [Vector2(-22, -1.64)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -333,7 +333,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 2, 4.43333, 4.86667),
 "transitions": PackedFloat32Array(1, 1, 6.06286, 1),
 "update": 0,
-"values": [Vector2(-19.6767, -1.63973), Vector2(2.57672, -6.09042), Vector2(2.57672, -1.17123), Vector2(-2.34247, -21.785)]
+"values": [Vector2(-22, -1.64), Vector2(2.57672, -6.09042), Vector2(2.57672, -1.17123), Vector2(-2.34247, -21.785)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -412,7 +412,7 @@ metadata/_edit_lock_ = true
 
 [node name="ScaryShow" type="Sprite2D" parent="Screen"]
 modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(-19.6767, -1.63973)
+position = Vector2(-22, -1.64)
 texture = ExtResource("7_wne11")
 
 [node name="Eyes" type="Node2D" parent="Screen/ScaryShow"]
