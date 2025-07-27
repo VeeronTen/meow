@@ -3,7 +3,7 @@
 
 
 
-![App Screenshot](https://github.com/VeeronTen/meow/blob/main/docs/page_video.avi)
+![App Screenshot](https://github.com/VeeronTen/meow/blob/main/docs/page_animation.gif)
 
 
 ## Maintanance
