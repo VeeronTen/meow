@@ -6,10 +6,8 @@ extends Node2D
 #мяч тяжело доставать, упросттить либо подсказкой либо интеракцией с креслом
 # перерисовать уши для МЫШЫ
 # если будет аутро, то выключить музыку в конце
-#найден секрет - видимо
+#всегда пролаг при падении первом в вебе
 
-# все постоянные чеки сменить на сигналы
-#5.  рефакетор всего потому что оч много всякого в котокоде
 #динамические размиеры
 #print(DisplayServer.screen_get_size())
 #print(DisplayServer.window_get_size())
@@ -45,8 +43,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func changeDayTime(day: bool):
 	var night = !day
 	$NightFilter.visible = night
-	$Boomboxes/BoomboxLeft.changeMusicVolume(night) 
-	$Boomboxes/BoomboxRight.changeMusicVolume(night)
+	$Boomboxes/BoomboxLeft.change_music_volume(night) 
+	$Boomboxes/BoomboxRight.change_music_volume(night)
 	$Cat.set_sleepy(night)
 
 func _on_lamp_light_switched(enabled: bool) -> void:
