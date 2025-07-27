@@ -183,16 +183,16 @@ z_index = 1
 position = Vector2(-14, 109)
 rotation = 0.194937
 scale = Vector2(-1, 1)
-busName = "Music"
-shakeIfAbove = 0.13
-shakedScale = 1.4
+_bus_name = "Music"
+_shake_if_above = 0.13
+_shaked_scale = 1.4
 
 [node name="BoomboxRight" parent="Boomboxes" instance=ExtResource("5_lquwl")]
 position = Vector2(1158, 109)
 rotation = -0.177384
-busName = "Music"
-shakeIfAbove = 0.095
-shakedScale = 1.1
+_bus_name = "Music"
+_shake_if_above = 0.095
+_shaked_scale = 1.1
 
 [node name="Ball" parent="." instance=ExtResource("6_7mycd")]
 position = Vector2(103, 519)
