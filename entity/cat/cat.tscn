@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cufb2uafm5kvg" path="res://common/pixel.png" id="5_2u0g4"]
 [ext_resource type="AudioStream" uid="uid://dj3n4asyfs1hx" path="res://entity/cat/sound/move.wav" id="7_2v165"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fl1u"]
-size = Vector2(115.278, 128)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_i2ana"]
+points = PackedVector2Array(-59.028, 67.5, 57.6391, 67.5, 57.6391, -5, 4.86113, -65, -59.028, 0)
 
 [sub_resource type="Animation" id="Animation_2hdoq"]
 length = 0.001
@@ -233,7 +233,7 @@ linear_damp = 1.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9.5, 0)
 scale = Vector2(0.719997, 0.4)
-shape = SubResource("RectangleShape2D_6fl1u")
+shape = SubResource("ConvexPolygonShape2D_i2ana")
 
 [node name="MeowPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_w46py")
