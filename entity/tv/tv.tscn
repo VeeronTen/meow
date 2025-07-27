@@ -295,20 +295,8 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.498039]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Screen/ScaryShow/Eyes:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
-[sub_resource type="Animation" id="Animation_mclhj"]
+[sub_resource type="Animation" id="Animation_fuogx"]
 resource_name = "screamer"
 length = 5.0
 tracks/0/type = "value"
@@ -318,7 +306,7 @@ tracks/0/path = NodePath(".:_screamer_noise_volume_boost")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4.7, 4.96667),
+"times": PackedFloat32Array(0, 4.46666, 4.73333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0, 20, 0]
@@ -330,7 +318,7 @@ tracks/1/path = NodePath("Screen/ScaryShow:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2, 4.43333, 4.86667),
+"times": PackedFloat32Array(0, 2, 4.19999, 4.63333),
 "transitions": PackedFloat32Array(1, 1, 6.06286, 1),
 "update": 0,
 "values": [Vector2(-22, -1.64), Vector2(2.57672, -6.09042), Vector2(-2.858, -1.171), Vector2(-6.272, -27.68)]
@@ -342,7 +330,7 @@ tracks/2/path = NodePath("Screen/ScaryShow:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.73333, 4.86667),
+"times": PackedFloat32Array(0, 1.73333, 4.63333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(4.56055, 4.56055)]
@@ -354,28 +342,16 @@ tracks/3/path = NodePath("Screen/ScaryShow:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 4.43333, 4.83333),
+"times": PackedFloat32Array(0, 4.19999, 4.59999),
 "transitions": PackedFloat32Array(0.466516, 5.46415, 1),
 "update": 0,
 "values": [0.498039, 0.168627, 0.831373]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Screen/ScaryShow/Eyes:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rwe48"]
 _data = {
 &"RESET": SubResource("Animation_rwe48"),
-&"screamer": SubResource("Animation_mclhj")
+&"screamer": SubResource("Animation_fuogx")
 }
 
 [node name="Tv" type="StaticBody2D"]
