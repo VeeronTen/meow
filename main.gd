@@ -58,11 +58,11 @@ func _on_tv_screamer_ended() -> void:
 	changeDayTime(true)
 	$Lamp.switch()
 	$SecretLabel.found()
-	for i in range(3):
+	for i in range(4):
 		_outro_player.stop()
 		_outro_player.play()
 		await get_tree().create_timer(1).timeout
-		_outro_player.volume_db += 8
+		_outro_player.volume_db += 5
 	get_tree().change_scene_to_file("res://outro/outro.tscn")
 
 func _on_tv_screamer_interrupted() -> void:
