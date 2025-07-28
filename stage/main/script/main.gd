@@ -2,7 +2,6 @@ extends Node2D
 
 #лагает на телефоне
 #мяч тяжело доставать на мобилке
-#всегда пролаг при падении первом в вебе из-за света
 #динамические размиеры
 #print(DisplayServer.screen_get_size())
 #print(DisplayServer.window_get_size())
@@ -13,9 +12,6 @@ extends Node2D
 var distance_to_scare_mouse = 300
 
 func _physics_process(_delta: float) -> void:
-	var distance_to_tv = $Cat.position.distance_to($Tv.position)
-	var new_noise_shift = -distance_to_tv / 30
-	$Tv.volume = new_noise_shift
 	var distance_to_mouse_hole = $Cat.position.distance_to($MouseHole.position)
 	if (distance_to_mouse_hole < distance_to_scare_mouse):
 		$MouseHole.scare()
