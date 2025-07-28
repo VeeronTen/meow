@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://di6pvah36xlpa"]
 
 [ext_resource type="Texture2D" uid="uid://bhq7oovcxwe48" path="res://entity/secret_label/image/secret_label_found.png" id="1_mng0s"]
-[ext_resource type="Script" uid="uid://bu2l6sivoloap" path="res://outro/outro.gd" id="1_yw0tw"]
-[ext_resource type="Texture2D" uid="uid://c08it7qqdvc75" path="res://outro/image/ty_for_playing.png" id="3_24x1m"]
-[ext_resource type="AudioStream" uid="uid://ux1oynuu3rm0" path="res://Lukrembo - Donut.mp3" id="4_24x1m"]
+[ext_resource type="Script" uid="uid://bu2l6sivoloap" path="res://stage/outro/outro.gd" id="1_yw0tw"]
+[ext_resource type="Texture2D" uid="uid://c08it7qqdvc75" path="res://stage/outro/image/ty_for_playing.png" id="3_24x1m"]
+[ext_resource type="AudioStream" uid="uid://ux1oynuu3rm0" path="res://common/sound/Lukrembo - Donut.mp3" id="4_24x1m"]
 
 [node name="Outro" type="Control"]
 layout_mode = 3

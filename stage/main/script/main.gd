@@ -63,7 +63,7 @@ func _on_tv_screamer_ended() -> void:
 		_outro_player.play()
 		await get_tree().create_timer(1).timeout
 		_outro_player.volume_db += 5
-	get_tree().change_scene_to_file("res://outro/outro.tscn")
+	get_tree().change_scene_to_file("res://stage/outro/outro.tscn")
 
 func _on_tv_screamer_interrupted() -> void:
 	vingetee_scary_player.stop()

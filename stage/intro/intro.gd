@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	else:
 		_time_over_pass = 0
 	if _time_over_pass > _TIME_TO_PASS:
-		get_tree().change_scene_to_file("res://main.tscn")
+		get_tree().change_scene_to_file("res://stage/main/main.tscn")
 
 func _on_texture_button_pressed() -> void:
 	_click_sound.pitch_scale = rng.randf_range(0.75, 1.1)

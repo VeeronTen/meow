@@ -23,4 +23,4 @@ func _next_slide():
 	elif slide_2.visible and not _finishing:
 		_finishing = true
 	elif _finishing:
-		get_tree().change_scene_to_file("res://intro/intro.tscn")
+		get_tree().change_scene_to_file("res://stage/intro/intro.tscn")

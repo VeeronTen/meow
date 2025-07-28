@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://c7jh4300b1ads"]
 
-[ext_resource type="Texture2D" uid="uid://crct4pap6bv3b" path="res://intro/image/meow.png" id="1_jkt4n"]
-[ext_resource type="Script" uid="uid://xybc3ulktfev" path="res://intro/intro.gd" id="1_vjsr4"]
+[ext_resource type="Texture2D" uid="uid://crct4pap6bv3b" path="res://stage/intro/image/meow.png" id="1_jkt4n"]
+[ext_resource type="Script" uid="uid://xybc3ulktfev" path="res://stage/intro/intro.gd" id="1_vjsr4"]
 [ext_resource type="AudioStream" uid="uid://b8d4v61qvk4ex" path="res://entity/cat/sound/meow.wav" id="2_pxqmo"]
-[ext_resource type="Texture2D" uid="uid://dnmpo5tq5hlxu" path="res://intro/image/meow_clicked.png" id="2_vjsr4"]
+[ext_resource type="Texture2D" uid="uid://dnmpo5tq5hlxu" path="res://stage/intro/image/meow_clicked.png" id="2_vjsr4"]
 
 [sub_resource type="Animation" id="Animation_vyos2"]
 length = 0.001
