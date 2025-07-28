@@ -4,24 +4,32 @@ signal screamer_started
 signal screamer_ended
 signal screamer_interrupted
 
+@export var volume: float = 0.0
+
 @onready var _default_scale = scale
 @onready var _default_rotation = rotation
-@onready var _default_noise_volume = $NoiseSound.volume_db
+
+@onready var _default_inner_noise_volume = $NoiseSound.volume_db
+@onready var _default_inner_switch_volume = $SwitchSound.volume_db
 
 var _rng = RandomNumberGenerator.new()
 
 var _switching_show_noise_boost = 10
-var _noise_shift_volume = 0
 var _screamer_allowed: bool = false
-@export var _screamer_noise_volume_boost = 0
+
+func _ready() -> void:
+	$NoiseSound.volume_db = _default_inner_noise_volume + volume
+	$SwitchSound.volume_db = _default_inner_switch_volume + volume
 
 func _process(delta: float) -> void:
 	scale = lerp(scale, _default_scale, delta * 4)
 	rotation = lerp(rotation, _default_rotation, delta * 4)
-	var new_noise_volume = _default_noise_volume + _noise_shift_volume + _screamer_noise_volume_boost
+	var new_noise_volume = _default_inner_noise_volume + volume
 	if $Screen/Noise.visible:
 		new_noise_volume += _switching_show_noise_boost
 	$NoiseSound.volume_db = new_noise_volume
+	var new_switch_volume = _default_inner_switch_volume + volume
+	$SwitchSound.volume_db = new_switch_volume
 	
 func switch_show():
 	scale = _default_scale * Vector2(1, 1.2)
@@ -35,16 +43,12 @@ func switch_show():
 	$Screen/ScaryShow.visible = false
 	$SwitchShowTimer.start()
 	
-
-func shift_noise_volume(shift_volume: float):
-	_noise_shift_volume = shift_volume
-	
 func _on_switch_show_timer_timeout() -> void:
 	if _screamer_allowed: 
 		_show_screamer()
 	else:
 		_show_regular_show()	
-		
+	
 func _show_regular_show():
 	var animations = $AnimationPlayer.get_animation_list()
 	$AnimationPlayer.get_index()
