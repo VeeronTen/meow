@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 uniform sampler2D offset_image : hint_default_white;
 uniform float strength = 1.0;
-uniform sampler2D SCREEN_TEXTURE:hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D SCREEN_TEXTURE:hint_screen_texture, filter_nearest;
 
 void fragment() {
 	vec4 output = texture(SCREEN_TEXTURE, SCREEN_UV);
