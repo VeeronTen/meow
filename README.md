@@ -13,4 +13,6 @@ The purpose of Meow was to experiment with various game development related stuf
 
 # Meow
 
-To try (pc only) - [click me](https://veeronten.github.io/meow/)
+Try (pc only)
+- [here on githab](https://veeronten.github.io/meow/)
+- [or on itch](https://veeronten.itch.io/meow)
